@@ -15,12 +15,21 @@ if (!$wxId) {
 	$resCheck = $newConn->checkRegist($openId);
 	if ($resCheck<0) {
 		$errCode = $resCheck;
-	} else $staffId = $resCheck;
+	} else 
+	{
+		$staffId = $resCheck;
+		$brands = $newConn->getBrands();
+		if ($brands<0) {
+			$errCode = $brands;
+		} else {
+			//do nothing
+		}
+	}
 }
 if ($errCode < 0) {
 	$errInfo = new ErrInfo();
-	$errMsg = $errInfo->getErrInfoByCode($errCode);
-}
+	$errMsg = $errInfo->getErrInfoByCode($errCode);}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,51 +61,104 @@ $(function() {
 	}
 });
 
+$(function(){
+	$("#addList").click(function(){
+		$("#listV").append('<li><h2>品牌名</h2><a style="text-align: center" class="delClick">货品名<span class="ui-li-count">25</span></a></li>');
+		$("#listV").listview( "refresh" );
+	});
+
+	$("#listV").on("click","li",function(){
+		alert($(this).find("a").text());
+		alert($(this).parent().find("a").text());
+		//$(this).css("background-color","red");
+		//$(this).parent().parent().parent().remove();
+		$(this).remove();
+		$("#listV").listview( "refresh" );
+	});
+	
+	function getSelectVal(){ 
+	    $.getJSON("getProducts.php",{brand:$("#brand").val()},function(json){ //从getProduct.php拿数据
+	        var product = $("#product"); 
+	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替 
+	        $.each(json,function(index,array){ 
+	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>"; 
+	            product.append(option); 
+	        }); 
+	    }); 
+	} 
+			
+});
+
+
 </script>
 
 </head>
 <body>
-<div data-role="page" data-control-title="员工认证" id="stuffAuth">
-    <div data-theme="b" data-role="header">
+	
+	<div data-role="page" id="accept">
+	<div data-theme="b" data-role="header">
         <h3>
-            员工认证
+            验收单
         </h3>
     </div>
     <div data-role="content">
-    <form id="postAuth" method="post" action="subStuffAuth.php" data-ajax="false">
-    	<div data-role="fieldcontain" data-controltype="textinput">
-            <label for="wxIds" class="ui-hidden-accessible">
-                wxIds
+    <div data-role="fieldcontain" data-controltype="selectmenu">
+            <label for="selectmenu1">
+                品牌：
             </label>
-            <input name="wxIds" id="wxIds" type="hidden" value="<?php echo $wxId;?>"/>
+            <select id="brand" name="brand" data-theme="b">
+            	
+<?php foreach ($brands as $key => $value) {
+ echo "<option value=\"".$key."\">".$value."</option>"; 
+}?>
+            </select>
         </div>
-        <div data-role="fieldcontain" data-controltype="textinput">
-            <label for="phoneNo">
-                手机号码
+        <div data-role="fieldcontain" data-controltype="selectmenu">
+            <label for="selectmenu2">
+                品名：
             </label>
-            <input name="phoneNo" id="phoneNo" placeholder="请填写手机号码..." type="tel" />
+            <select id="selectmenu2" name="" data-theme="b">
+                <option value="option1">
+                    Option 1
+                </option>
+            </select>
         </div>
-        
-        <div data-role="fieldcontain" data-controltype="textinput">
-            <label for="idCard">
-                身份证号码
+    
+		
+			<button id="addList" name="addList">添加一个</button>
+			<h4>收货单</h4>
+			<ul id="listV" data-role="listview" data-inset="true" data-icon="delete">
+				<li><h2>标题1</h2><a style="text-align: center" class="delClick">收件箱<span	class="ui-li-count">25</span></a></li>
+				<li><h2>标题2</h2><a style="text-align: center" class="delClick">收件箱<span class="ui-li-count">25</span></a></li>
+				<li><a class="delClick">发件箱<span class="ui-li-count">432</span></a></li>
+				<li><a class="delClick">垃圾箱<span class="ui-li-count">7</span></a></li>
+			</ul>
+			
+			
+			<div data-role="fieldcontain" data-controltype="camerainput">
+            <label for="camerainput1">
+                近景照片：
             </label>
-            <input name="idCard" id="idCard" placeholder="请填写身份证号..." type="text" />
+            <input type="file" name="" id="camerainput1" accept="image/*" capture="camera"
+            data-mini="true">
         </div>
-        
-        <button id="getCodeButton" type="button" data-theme="b">获取验证码</button>
-        
-        <div data-role="fieldcontain" data-controltype="textinput">
-            <label for="verifyCode">
-                验证码
+        <div data-role="fieldcontain" data-controltype="camerainput">
+            <label for="camerainput2">
+                验收单照片：
             </label>
-            <input name="verifyCode" id="verifyCode" placeholder="填写短信验证码..." value="" type="text">
+            <input type="file" name="" id="camerainput2" accept="image/*" capture="camera"
+            data-mini="true">
         </div>
-        <button id="subCode" name="subCode" data-theme="b" disabled="true">进行认证</button>
-    </form>
-    </div>
-</div>
-
+        <div data-role="fieldcontain" data-controltype="camerainput">
+            <label for="camerainput3">
+                整体照片：
+            </label>
+            <input type="file" name="" id="camerainput3" accept="image/*" capture="camera"
+            data-mini="true">
+        </div>
+		<button>提交验收单</button>	
+		</div>
+	</div>
 
 <div data-role="page" data-control-title="dialog" id="dialog">
     <div data-theme="b" data-role="header">

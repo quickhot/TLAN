@@ -97,4 +97,19 @@ class MysqlDB{
 		} else return -11;
 	}
 	
+	function getBrands(){
+		$qryBrands = "SELECT * FROM brand";
+		$resBrands = mysql_query($qryBrands,$this->link);
+		if($resBrands) {
+			$retArray = array();
+			while($rowBrands=mysql_fetch_array($resBrands,MYSQL_NUM)){
+				$retArray[] = $rowBrands;
+			}
+			return $retArray;
+		} else {
+			return -12;
+		}
+		
+	}
+	
 }
