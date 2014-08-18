@@ -1,0 +1,1003 @@
+2014-08-08T15:38:33+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407483512</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[啊！]]></Content>
+<MsgId>6045095653899713764</MsgId>
+</xml>
+2014-08-08T15:38:34+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407483512
+    [MsgType] => text
+    [Content] => 啊！
+    [MsgId] => 6045095653899713764
+)
+
+2014-08-08T15:39:12+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407483551</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[hello,world!]]></Content>
+<MsgId>6045095821403438316</MsgId>
+</xml>
+2014-08-08T15:39:12+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407483551
+    [MsgType] => text
+    [Content] => hello,world!
+    [MsgId] => 6045095821403438316
+)
+
+2014-08-08T16:07:28+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485247</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-08T16:07:28+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485247
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-08T16:07:33+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485253</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-08T16:07:33+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485253
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-08T16:07:48+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485266</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-08T16:07:48+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485266
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-08T16:07:59+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485279</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[accountDetail]]></EventKey>
+</xml>
+2014-08-08T16:07:59+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485279
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => accountDetail
+)
+
+2014-08-08T16:08:05+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485285</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[VIEW]]></Event>
+<EventKey><![CDATA[http://mp.weixin.qq.com/s?__biz=MzA4Mzg4MzYyNQ==&mid=200490315&idx=1&sn=4f039bca80aedf2313302e9698ff39e3#rd]]></EventKey>
+</xml>
+2014-08-08T16:08:05+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485285
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://mp.weixin.qq.com/s?__biz=MzA4Mzg4MzYyNQ==&mid=200490315&idx=1&sn=4f039bca80aedf2313302e9698ff39e3#rd
+)
+
+2014-08-08T16:08:18+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485298</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[showFee]]></EventKey>
+</xml>
+2014-08-08T16:08:18+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485298
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => showFee
+)
+
+2014-08-08T16:08:22+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485302</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[accountDetail]]></EventKey>
+</xml>
+2014-08-08T16:08:22+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485302
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => accountDetail
+)
+
+2014-08-08T16:08:25+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485305</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[checkRecv]]></EventKey>
+</xml>
+2014-08-08T16:08:25+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485305
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => checkRecv
+)
+
+2014-08-08T16:08:44+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485323</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-08T16:08:44+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485323
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-08T16:10:05+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485405</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-08T16:10:05+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485405
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-08T16:10:08+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485408</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-08T16:10:08+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485408
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-08T16:10:19+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485419</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[checkRecv]]></EventKey>
+</xml>
+2014-08-08T16:10:19+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485419
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => checkRecv
+)
+
+2014-08-08T16:10:21+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407485421</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-08T16:10:21+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407485421
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-11T17:46:17+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407750375</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-11T17:46:17+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407750375
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T09:15:34+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407806134</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T09:15:34+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407806134
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T09:18:22+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407806298</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T09:18:22+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407806298
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T09:18:50+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407806330</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T09:18:50+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407806330
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T09:26:14+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407806774</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T09:26:14+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407806774
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T09:26:25+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407806785</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T09:26:25+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407806785
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T09:38:01+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407807481</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T09:38:01+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407807481
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T10:26:44+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407810404</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T10:26:44+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407810404
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T12:03:35+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407816215</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T12:03:35+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407816215
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T13:11:49+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407820307</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T13:11:49+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407820307
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T13:12:26+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407820346</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T13:12:26+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407820346
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T13:12:56+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407820376</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T13:12:56+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407820376
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T15:50:04+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407829803</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T15:50:04+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407829803
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T15:50:09+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407829805</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T15:50:09+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407829805
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T15:50:18+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407829818</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T15:50:18+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407829818
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T15:53:32+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830012</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T15:53:32+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830012
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T15:53:41+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830021</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T15:53:41+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830021
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T15:55:10+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830110</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T15:55:10+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830110
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T15:57:43+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830263</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T15:57:43+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830263
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T15:57:47+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830266</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T15:57:47+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830266
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:00:47+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830447</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:00:47+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830447
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:00:53+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830452</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:00:53+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830452
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:01:04+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830464</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:01:04+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830464
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:01:31+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830491</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:01:31+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830491
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:01:51+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830511</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:01:51+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830511
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:02:00+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830519</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:02:00+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830519
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:02:24+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830544</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:02:24+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830544
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:03:18+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407830598</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:03:18+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407830598
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:17:30+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407831450</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:17:30+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407831450
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:17:33+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407831453</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:17:33+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407831453
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:31:27+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407832287</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:31:27+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407832287
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:31:30+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407832290</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:31:30+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407832290
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:32:00+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407832320</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:32:00+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407832320
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:32:06+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407832326</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:32:06+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407832326
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:32:18+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407832338</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T16:32:18+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407832338
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-12T16:33:03+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407832383</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:33:03+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407832383
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-12T16:33:13+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407832393</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-12T16:33:13+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407832393
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-12T17:01:06+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407834066</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-12T17:01:06+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407834066
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-13T11:50:57+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQtxpNnRNv0S8yUGrzWW6KWpM]]></FromUserName>
+<CreateTime>1407901857</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[111]]></Content>
+<MsgId>6046892431993180372</MsgId>
+</xml>
+2014-08-13T11:50:57+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQtxpNnRNv0S8yUGrzWW6KWpM
+    [CreateTime] => 1407901857
+    [MsgType] => text
+    [Content] => 111
+    [MsgId] => 6046892431993180372
+)
+
+2014-08-13T12:06:31+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407902791</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[unsubscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-13T12:06:31+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407902791
+    [MsgType] => event
+    [Event] => unsubscribe
+    [EventKey] => 
+)
+
+2014-08-13T12:06:34+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407902794</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[subscribe]]></Event>
+<EventKey><![CDATA[]]></EventKey>
+</xml>
+2014-08-13T12:06:34+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407902794
+    [MsgType] => event
+    [Event] => subscribe
+    [EventKey] => 
+)
+
+2014-08-13T12:06:42+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407902802</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-13T12:06:42+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407902802
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-13T12:15:28+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407903328</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-13T12:15:28+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407903328
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
+2014-08-13T12:15:30+08:00 [myAppender] <xml><ToUserName><![CDATA[gh_be1661a2b9ef]]></ToUserName>
+<FromUserName><![CDATA[oaVTQt6xucCMO89QE94ZYyDWCUuU]]></FromUserName>
+<CreateTime>1407903330</CreateTime>
+<MsgType><![CDATA[event]]></MsgType>
+<Event><![CDATA[CLICK]]></Event>
+<EventKey><![CDATA[register]]></EventKey>
+</xml>
+2014-08-13T12:15:30+08:00 [myAppender] Array
+(
+    [ToUserName] => gh_be1661a2b9ef
+    [FromUserName] => oaVTQt6xucCMO89QE94ZYyDWCUuU
+    [CreateTime] => 1407903330
+    [MsgType] => event
+    [Event] => CLICK
+    [EventKey] => register
+)
+
