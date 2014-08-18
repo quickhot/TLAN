@@ -13,7 +13,6 @@ $(function(){
 		$("#listV").append('<li><h2>品牌名</h2><a style="text-align: center" class="delClick">货品名<span class="ui-li-count">25</span></a></li>');
 		$("#listV").listview( "refresh" );
 	});
-	
 /*
 	$(".delClick").on("click",function(){
 		alert(this.text);
