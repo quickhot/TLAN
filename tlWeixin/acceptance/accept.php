@@ -85,7 +85,13 @@ $(function(){
 	            product.append(option); 
 	        }); 
 	    }); 
-	} 
+	}
+	
+	getSelectVal(); 
+    $("#brand").change(function(){ 
+        getSelectVal(); 
+    }); 
+});  
 			
 });
 
@@ -103,7 +109,7 @@ $(function(){
     </div>
     <div data-role="content">
     <div data-role="fieldcontain" data-controltype="selectmenu">
-            <label for="selectmenu1">
+            <label for="brand">
                 品牌：
             </label>
             <select id="brand" name="brand" data-theme="b">
@@ -114,10 +120,10 @@ $(function(){
             </select>
         </div>
         <div data-role="fieldcontain" data-controltype="selectmenu">
-            <label for="selectmenu2">
+            <label for="product">
                 品名：
             </label>
-            <select id="selectmenu2" name="" data-theme="b">
+            <select id="product" name="" data-theme="b">
                 <option value="option1">
                     Option 1
                 </option>

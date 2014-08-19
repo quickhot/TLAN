@@ -103,7 +103,8 @@ class MysqlDB{
 		if($resBrands) {
 			$retArray = array();
 			while($rowBrands=mysql_fetch_array($resBrands,MYSQL_NUM)){
-				$retArray[] = $rowBrands;
+				$num = $rowBrands[0];
+				$retArray[$num] = $rowBrands[1];
 			}
 			return $retArray;
 		} else {
@@ -111,5 +112,7 @@ class MysqlDB{
 		}
 		
 	}
+	
+	
 	
 }
