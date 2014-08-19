@@ -41,6 +41,7 @@ if ($errCode < 0) {
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 <script src="../js/WeixinApi.js"></script>
+<script type="text/javascript" src="../js/ajaxfileupload.js" ></script>
 <script type="text/javascript">
 WeixinApi.ready(function(Api){
     // 隐藏右上角popup菜单入口
@@ -57,23 +58,31 @@ WeixinApi.ready(function(Api){
 var errCode = <?php echo $errCode;?>;
 $(function() {
 	if (errCode < 0) {
-		$.mobile.changePage("#dialog");
+		$.mobile.changePage("#dialog",{role:"dialog"});
 	}
 });
 
 $(function(){
 	$("#addList").click(function(){
-		$("#listV").append('<li><h2>品牌名</h2><a style="text-align: center" class="delClick">货品名<span class="ui-li-count">25</span></a></li>');
+		var brandText=$("#brand").find("option:selected").text();
+		var productText=$("#product").find("option:selected").text();
+		var productId = $("#product").val();
+		var amount = $("#amount").val();
+		if (amount=='undefined' || amount==''){
+			alert("请填写货品数量");
+			return false;
+		}
+		$("#listV").append('<li><h2>'+brandText+'</h2><a style="text-align: center" class="delClick">[*'+productId+'*]'+productText+'<span class="ui-li-count">'+amount+'</span></a></li>');
 		$("#listV").listview( "refresh" );
 	});
 
 	$("#listV").on("click","li",function(){
-		alert($(this).find("a").text());
-		alert($(this).parent().find("a").text());
+		if(confirm("您确定要删除"+$(this).find("a").text()+"吗？")) {
 		//$(this).css("background-color","red");
 		//$(this).parent().parent().parent().remove();
 		$(this).remove();
 		$("#listV").listview( "refresh" );
+		}
 	});
 	
 	function getSelectVal(){ 
@@ -83,9 +92,62 @@ $(function(){
 	        $.each(json,function(index,array){ 
 	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>"; 
 	            product.append(option); 
-	        }); 
+	        });
+	        $("#product").selectmenu("refresh",true);
 	    }); 
 	}
+
+	//上传文件开始显示对话框
+	$("[type='file']").live("change",function(){
+		
+		$(this).ajaxStart(function(){
+			$.mobile.changePage("#beginUpload",{role:"dialog"});
+		})
+		$(this).ajaxComplete(function(){
+			$.mobile.changePage("#accept");
+		});
+		
+		var ids = $(this).attr("id");
+		$.ajaxFileUpload
+		(
+			{
+				url:'../doajaxfileupload.php?flag='+Math.random(),
+				secureuri:false,
+				fileElementId:ids,
+				dataType: 'json',
+				data:{field:ids},
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							alert(data.msg);
+							alert($(this).parent().parent().className);
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+	});
+	
+	$("#subAccept").click(function(){
+		alert('submit');
+		var selectPro = new Array();
+		$("#listV li").each(function(n,value) {
+			selectPro.push($(this).find("span").text()+"!!!"+$(this).find("a").text());
+		});
+		alert($("#nearPhoto").val());
+		alert($("#acceptDoc").val());
+		alert($("#farPhoto").val());
+	});
 	
 	getSelectVal(); 
     $("#brand").change(function(){ 
@@ -93,9 +155,6 @@ $(function(){
     }); 
 });  
 			
-});
-
-
 </script>
 
 </head>
@@ -124,45 +183,43 @@ $(function(){
                 品名：
             </label>
             <select id="product" name="" data-theme="b">
-                <option value="option1">
-                    Option 1
-                </option>
+
             </select>
         </div>
-    
+    <div data-role="fieldcontain" data-controltype="textinput">
+            <label for="amount">
+                货品数量
+            </label>
+            <input name="amount" id="amount" placeholder="请填写货品数量..." type="number" />
+        </div>
 		
-			<button id="addList" name="addList">添加一个</button>
+			<button id="addList" name="addList">添加货品</button>
 			<h4>收货单</h4>
 			<ul id="listV" data-role="listview" data-inset="true" data-icon="delete">
-				<li><h2>标题1</h2><a style="text-align: center" class="delClick">收件箱<span	class="ui-li-count">25</span></a></li>
-				<li><h2>标题2</h2><a style="text-align: center" class="delClick">收件箱<span class="ui-li-count">25</span></a></li>
-				<li><a class="delClick">发件箱<span class="ui-li-count">432</span></a></li>
-				<li><a class="delClick">垃圾箱<span class="ui-li-count">7</span></a></li>
 			</ul>
 			
 			
 			<div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="camerainput1">
+            <label for="nearPhoto">
                 近景照片：
             </label>
-            <input type="file" name="" id="camerainput1" accept="image/*" capture="camera"
+            <input type="file" name="nearPhoto" id="nearPhoto" accept="image/*" capture="camera"
             data-mini="true">
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="camerainput2">
+            <label for="acceptDoc">
                 验收单照片：
             </label>
-            <input type="file" name="" id="camerainput2" accept="image/*" capture="camera"
+            <input type="file" name="acceptDoc" id="acceptDoc" accept="image/*" capture="camera"
             data-mini="true">
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="camerainput3">
+            <label for="farPhoto">
                 整体照片：
             </label>
-            <input type="file" name="" id="camerainput3" accept="image/*" capture="camera"
-            data-mini="true">
+            <input type="file" name="farPhoto" id="farPhoto" accept="image/*;capture=camera" data-mini="true">
         </div>
-		<button>提交验收单</button>	
+		<button id="subAccept">提交验收单</button>	
 		</div>
 	</div>
 
@@ -185,6 +242,18 @@ $(function(){
         <p style="text-align: center"><button id="closePage">关闭</button></p>
     </div>
 </div>
+
+<div data-role="page" data-theme="b" id="beginUpload" data-close-btn="none">
+	
+		<div data-role="header">
+			<h1>Dialog</h1>
+		</div>
+		<div data-role="content">
+			<h1>图片上传中</h1>
+			<p>请等待图片上传，上传完毕后，此框自动消失...</p>
+		</div>
+</div>
+
 </body>
 </html>
 

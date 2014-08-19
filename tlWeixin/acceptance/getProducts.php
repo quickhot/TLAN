@@ -3,7 +3,7 @@ include_once '../conf/mysql.php';
 include_once '../classes/MysqlDB.class.php';
 
 $brandId = $_GET["brand"];//取得商户ID
-$newConn = new MysqlDB(DBHOST,DBUSER,DBPASS,DBNAMEa);
+$newConn = new MysqlDB(DBHOST,DBUSER,DBPASS,DBNAME);
 
 if(isset($brandId)){ 
    //通过BRANDID获取商品ID和商品名称
