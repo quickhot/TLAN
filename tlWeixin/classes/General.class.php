@@ -34,7 +34,7 @@ class General {
 	 * @param array $arr
 	 * @return array
 	 */
-	function multiDimensionalArrayMap($func,$arr)
+	public function multiDimensionalArrayMap($func,$arr)
 	{
 		$newArr=array();
 		foreach($arr as $key=>$value)
