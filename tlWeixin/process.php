@@ -47,6 +47,13 @@ if ($postArray['MsgType']=='event') {
 		$echoStr = '<a href="'.$acceptUrl.'">点击此处验收货物</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
+	//退换货exchange
+	if ($postArray['EventKey']=='exchange') {
+		$exchangeUrl = "http://".HOST."/exchange/exchange.php?wxId=".urlencode(General::wlencode($fromUserName));
+		$echoStr = '<a href="'.$exchangeUrl.'">点击此处退换货/买赠</a>';
+		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
+	};
+	
 	if ($postArray['Event']=='subscribe') {
 		$ret=file_get_contents("http://".HOST."/regNewUser.php?wxId=".urlencode(General::wlencode($fromUserName)));
 		if ($ret>0) {

@@ -28,8 +28,15 @@ if ($openId && $phoneNo) {
 				$ret['success']=0;
 				$ret['errCode']=-6;
 			} else {
-				$ret['success']=1;
-				$ret['errCode']=1;
+				$sendSMS = General::sendSMS($phoneNo,"您的短信验证码是：$getVerifyCode");
+				if ($sendSMS==1) {
+					$ret['success']=1;
+					$ret['errCode']=1;
+				} else {
+					$ret['success']=0;
+					$ret['errCode']=$sendSMS;
+				}
+				
 			}
 		}
 	} else {

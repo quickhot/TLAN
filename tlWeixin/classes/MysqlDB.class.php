@@ -22,6 +22,16 @@ class MysqlDB{
 		} else return -5;
 	}
 	
+	function getPhoneNoByOpenId($openId) {
+		$qryPhoneNo = "SELECT mobileNo	FROM staff WHERE openId='$openId'";
+		$resPhoneNo = mysql_query($qryPhoneNo,$this->link);
+		$rowPhoneNo = mysql_fetch_row($resPhoneNo);
+		$phoneNo = $rowPhoneNo[0];
+		if ($phoneNo) {
+			return $phoneNo;
+		} else return -16;
+	}
+	
 	function requestVerifyCode($openId) {
 		$newCode = $this->genCode();
 		$qryVerifyCode = "SELECT count(*) FROM verify WHERE openId='$openId'";
@@ -37,7 +47,17 @@ class MysqlDB{
 		if ($res) {
 			return $newCode;
 		} else return -2;
-	}	
+	}
+
+	function checkVerifiCode($openId,$code){
+		$qryCode = "SELECT verifyCode FROM verify WHERE openId='$openId'";
+		$resCode = mysql_query($qryCode,$this->link);
+		$rowCode = mysql_fetch_row($resCode);
+		$getCode = $rowCode[0];
+		if ($code==$getCode) {
+			return 1;
+		} else return -17;
+	}
 	
 	function addNewUser($openId) {
 		$qryNewUser="INSERT IGNORE INTO verify(openId) VALUES('$openId')";

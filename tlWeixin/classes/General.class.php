@@ -44,6 +44,18 @@ class General {
 		return $newArr;
 	}
 	
+	public function sendSMS($phoneNo,$content){
+		$cpid    = '3312';//--------------------------->>企业ID，请联系我们索取免费测试帐号
+		$cppwd   = strtoupper(MD5("772330"));//---------->>ID密码
+		$httpstr = "http://223.4.131.214:8080/mt/?cpid={$cpid}&cppwd={$cppwd}&phone={$phoneNo}&encode=utf8&msgtext=".urlencode($content);
+		$result  = @file_get_contents($httpstr);
+		if($result == '0'){
+			return 1;
+		}else{
+			return -18;
+		}
+	}
+	
 }
 
 ?>
