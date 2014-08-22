@@ -1,4 +1,15 @@
 <?php
+/*
+23:30
+货品上架：
+3张照片
+1、整体货架照片
+2、近景货品照片
+3、条码照片（超市标签）
+*/
+
+
+
 //echo $_REQUEST['echostr'];
 //调用logger
 include_once 'classes/log4php/Logger.php';
@@ -45,6 +56,12 @@ if ($postArray['MsgType']=='event') {
 	if ($postArray['EventKey']=='checkRecv') {
 		$acceptUrl = "http://".HOST."/acceptance/accept.php?wxId=".urlencode(General::wlencode($fromUserName));
 		$echoStr = '<a href="'.$acceptUrl.'">点击此处验收货物</a>';
+		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
+	};
+	//货品上架
+	if ($postArray['EventKey']=='listing') {
+		$listUrl = "http://".HOST."/list/list.php?wxId=".urlencode(General::wlencode($fromUserName));
+		$echoStr = '<a href="'.$listUrl.'">点击此处货物上架</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
 	//退换货exchange
