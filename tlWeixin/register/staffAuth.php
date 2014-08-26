@@ -90,14 +90,14 @@ $(function() {
 </script>
 </head>
 <body>
-<div data-role="page" data-control-title="员工认证" id="stuffAuth">
+<div data-role="page" data-control-title="员工认证" id="staffAuth">
     <div data-theme="b" data-role="header">
         <h3>
             员工认证
         </h3>
     </div>
     <div data-role="content">
-    <form id="postAuth" method="post" action="subStuffAuth.php" data-ajax="false">
+    <form id="postAuth" method="post" action="subStaffAuth.php" data-ajax="false">
     	<div data-role="fieldcontain" data-controltype="textinput">
             <label for="wxIds" class="ui-hidden-accessible">
                 wxIds

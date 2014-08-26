@@ -23,22 +23,12 @@ if ($movBarCodePic && $movNearPic && $movFarPic) {
 	$link = $conn->link;
 	mysql_query("SET AUTOCOMMIT=0",$link);
 	mysql_query("begin",$link);
-	$insAccept = "INSERT INTO acceptance(accTime,stuffId,acceptDocPic,acceptGoodsPic,acceptNearPic) (SELECT NOW(),id,'$barCodePic','$farPic','$nearPic' FROM staff WHERE openId='$openId')";
+	$insAccept = "INSERT INTO listing(listTime,staffId,listNearPic,barCodePic,listFarPic,productId) (SELECT NOW(),id,'$nearPic','$farPic','$barCodePic','$productId' FROM staff WHERE openId='$openId')";
 	mysql_query($insAccept,$link);
 	$acceptId = mysql_insert_id($link);
 	if ($acceptId) {
-		
-		foreach ($proList as $productId => $amount) {
-			$sqlValues = $sqlValues."($productId,$amount,$acceptId),";
-		}
-		$insDetail = substr("INSERT INTO acceptdetail(productId,amount,acceptanceId) VALUES $sqlValues",0,-1);
-		if (mysql_query($insDetail,$link)) {
-			$ret['success']=1;
-			$ret['errCode'] = 1;
-		} else {
-			$ret['errCode'] = -15;
-		}
-	} else $ret['errCode'] = -14;
+
+	} else $ret['errCode'] = -19;
 	
 	if ($ret['errCode']>0) {
 		mysql_query("commit",$link);
@@ -54,6 +44,6 @@ if ($movBarCodePic && $movNearPic && $movFarPic) {
 
 $errInfo = new ErrInfo();
 $ret['errInfo'] = $errInfo->getErrInfoByCode($ret['errCode']);
-//$ret['errInfo'] = $insDetail;
+//$ret['errInfo'] = $insAccept;
 echo json_encode($ret);
 ?>

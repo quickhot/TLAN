@@ -34,7 +34,7 @@ if ($movAcceptPic && $movNearPic && $movFarPic) {
 	$link = $conn->link;
 	mysql_query("SET AUTOCOMMIT=0",$link);
 	mysql_query("begin",$link);
-	$insAccept = "INSERT INTO acceptance(accTime,stuffId,acceptDocPic,acceptGoodsPic,acceptNearPic) (SELECT NOW(),id,'$acceptPic','$farPic','$nearPic' FROM staff WHERE openId='$openId')";
+	$insAccept = "INSERT INTO acceptance(accTime,staffId,acceptDocPic,acceptGoodsPic,acceptNearPic) (SELECT NOW(),id,'$acceptPic','$farPic','$nearPic' FROM staff WHERE openId='$openId')";
 	mysql_query($insAccept,$link);
 	$acceptId = mysql_insert_id($link);
 	if ($acceptId) {

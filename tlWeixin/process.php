@@ -7,7 +7,23 @@
 2、近景货品照片
 3、条码照片（超市标签）
 */
-
+/*29:00
+ * 销毁
+ * 单子照片
+ * 近景照片（瓶子日期）
+ * 销毁中照片（整体）
+ * 瓶盖照片（瓶数和瓶盖）
+  
+ * 
+ * 买赠
+ * 单子照片
+ * 近景（日期要清晰）
+ * 货架照片（整体的捆绑好的照片）
+ * 仓库照片
+ */
+/*
+ * 34:10陈列
+ */
 
 
 //echo $_REQUEST['echostr'];
@@ -48,7 +64,7 @@ $response = new Response();
 if ($postArray['MsgType']=='event') {
 	//认证
 	if ($postArray['EventKey']=='register') {
-		$regUrl = "http://".HOST."/register/stuffAuth.php?wxId=".urlencode(General::wlencode($fromUserName));
+		$regUrl = "http://".HOST."/register/staffAuth.php?wxId=".urlencode(General::wlencode($fromUserName));
 		$echoStr = '<a href="'.$regUrl.'">点击此处员工认证</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
@@ -67,7 +83,7 @@ if ($postArray['MsgType']=='event') {
 	//退换货exchange
 	if ($postArray['EventKey']=='exchange') {
 		$exchangeUrl = "http://".HOST."/exchange/exchange.php?wxId=".urlencode(General::wlencode($fromUserName));
-		$echoStr = '<a href="'.$exchangeUrl.'">点击此处退换货/买赠</a>';
+		$echoStr = '<a href="'.$exchangeUrl.'">点击此处退换/买赠</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
 	

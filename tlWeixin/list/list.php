@@ -372,7 +372,11 @@ $(function(){
         </div>
     </div>
     <div data-theme="b" data-role="footer" data-position="fixed">
-        <p style="text-align: center"><button id="closePage">关闭</button></p>
+        <div data-role="navbar">
+    <ul>
+        <li><button id="closePage">关闭</button></li>
+    </ul>
+    </div>
     </div>
 </div>
 
