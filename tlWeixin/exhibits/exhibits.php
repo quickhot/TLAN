@@ -38,7 +38,7 @@ if ($errCode < 0) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
-<title>退换货/买赠</title>
+<title>货品陈列</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
@@ -148,43 +148,6 @@ $(function(){
          }
     );
 
-/*
-	//添加货品按钮点击
-	$("#addList").click(function(){
-		var brandText=$("#brand").find("option:selected").text();
-		var productText=$("#product").find("option:selected").text();
-		var productId = $("#product").val();
-		var amount = $("#amount").val();
-		if (amount=='undefined' || amount==''){
-			alert("请填写货品数量");
-			return false;
-		}
-		$("#listV").append('<li><h2>'+brandText+'</h2><a style="text-align: center" class="delClick">[*'+productId+'*]'+productText+'<span class="ui-li-count">'+amount+'</span></a></li>');
-		$("#listV").listview( "refresh" );
-	});
-
-	//点击已经添加的货品列表，标识要删除
-	$("#listV").on("click","li",function(){
-		if(confirm("您确定要删除"+$(this).find("a").text()+"吗？")) {
-		//$(this).css("background-color","red");
-		//$(this).parent().parent().parent().remove();
-		$(this).remove();
-		$("#listV").listview( "refresh" );
-		}
-	});
-*/
-	//当品牌选择框发生变化时，获取产品的函数
-	function getSelectVal(){ 
-	    $.getJSON("../getProducts.php",{brand:$("#brand").val()},function(json){ //从getProduct.php拿数据
-	        var product = $("#product"); 
-	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替 
-	        $.each(json,function(index,array){ 
-	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>"; 
-	            product.append(option); 
-	        });
-	        $("#product").selectmenu("refresh",true);
-	    }); 
-	}
 
 	//点击上传文件按钮
 	$("[type='file']").live("change",function(){
@@ -194,7 +157,7 @@ $(function(){
 		})
 		//上传文件结束返回
 		$(this).ajaxComplete(function(){
-			$.mobile.changePage("#exchange");
+			$.mobile.changePage("#exhibits");
 		});
 		//上传文件
 		var title = $(this).parent().prev();
@@ -230,18 +193,15 @@ $(function(){
 		)
 	});
 	//点击最终上传按钮函数
-	function submitExchange(cType,productId,amount,docPic,nearPic,farPic,inventoryPic) {
+	function submitExhibits(invoicePic,nearPic,farPic,barCodePic) {
 		$.ajax({
 			type: "post",
-			url: "submitExchange.php",
+			url: "submitExhibits.php",
 			data:{
-				'cType':cType,
-				'productId':productId,
-				'amount':amount,
-				'docPic':docPic,
+				'invoicePic':invoicePic,
 				'farPic':farPic,
 				'nearPic':nearPic,
-				'inventoryPic':inventoryPic,
+				'barCodePic':barCodePic,
 				'openId':'<?php echo $openId;?>'},
 			beforeSend: function(XMLHttpRequest){
 			},
@@ -267,39 +227,21 @@ $(function(){
 	}
 	
 	//点击最终上传按钮触发事件
-	$("#subExchange").click(function(){
-		var cType = $("#cType").val();
-		var productId = $("#product").val();
-		var amount = $("#amount").val();
-		var docPic = $("#docPic").val();
+	$("#subExhibits").click(function(){
+		var invoicePic = $("#invoicePic").val();
 		var nearPic = $("#nearPic").val();
 		var farPic = $("#farPic").val();
-		var inventoryPic = $("#inventoryPic").val();
+		var barCodePic = $("#barCodePic").val();
 		var vCode = checkVerifyCode();
 		if (vCode=="1"){
-			if (cType!='' && productId!='' && amount!='' && docPic!='' && nearPic!='' && farPic!='' && inventoryPic !='' && vCode!='') {
-				submitExchange(cType,productId,amount,docPic,nearPic,farPic,inventoryPic);
+			if (invoicePic!='' && nearPic!='' && farPic!='' && barCodePic !='') {
+				submitExhibits(invoicePic,nearPic,farPic,barCodePic);
 			} else{
 				alert("信息不完整，请填写完全");
 			}
 		} else alert("验证码不正确");
 	});
-	//开始运行时获取产品列表
-	getSelectVal(); 
-	//品牌列表变化，触发事件
-    $("#brand").change(function(){ 
-        getSelectVal(); 
-    });
-    $("#cType").change(function(){ 
-        var cType = $("#cType").val();
-        if(cType=='1') {
-            $("#destory").text("货架照片(绑扎照片)");
-            $("#cap").text("仓库货品照片");
-        } else if(cType='2'){
-        	$("#destory").text("销毁操作照片");
-            $("#cap").text("瓶子和瓶盖数量");
-        }
-    });
+
 });  
 			
 </script>
@@ -307,70 +249,35 @@ $(function(){
 </head>
 <body>
 	
-	<div data-role="page" id="exchange" data-theme="b">
+	<div data-role="page" id="exhibits" data-theme="b">
 	<div data-theme="b" data-role="header">
-        <h3>退换货/买赠</h3>
+        <h3>货品陈列</h3>
     </div>
     <div data-role="content">
     
-	<div data-role="fieldcontain" data-controltype="selectmenu">
-		<label for="cType">操作类型：</label>
-            <select id="cType" name="cType" data-theme="b">
-				<option value="">请选择操作类型</option>
-				<option value="1">买赠</option>
-				<option value="2">退换货</option>
-            </select>
-        </div>
-    
-    <div data-role="fieldcontain" data-controltype="selectmenu">
-            <label for="brand">
-                品牌：
-            </label>
-            <select id="brand" name="brand" data-theme="b">
-            	
-<?php foreach ($brands as $key => $value) {
- echo "<option value=\"".$key."\">".$value."</option>"; 
-}?>
-            </select>
-        </div>
-        <div data-role="fieldcontain" data-controltype="selectmenu">
-            <label for="product">
-                品名：
-            </label>
-            <select id="product" name="" data-theme="b">
-
-            </select>
-        </div>
-    <div data-role="fieldcontain" data-controltype="textinput">
-            <label for="amount">
-                货品数量
-            </label>
-            <input name="amount" id="amount" placeholder="请填写货品数量..." type="number" />
-        </div>
-		
 		<div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="docPhoto">退换货单：</label>
-            <input type="file" name="docPhoto" id="docPhoto" accept="image/*" capture="camera" data-mini="true">
-            <label for="docPic" class="ui-hidden-accessible">docPic</label>
-            <input name="docPic" id="docPic" type="hidden" />
+            <label for="invoicePhoto">发票照片：</label>
+            <input type="file" name="invoicePhoto" id="invoicePhoto" accept="image/*" capture="camera" data-mini="true">
+            <label for="invoicePic" class="ui-hidden-accessible">invoicePic</label>
+            <input name="invoicePic" id="invoicePic" type="hidden" />
         </div>			
 		<div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="nearPhoto">近景照片(货品日期清晰)：</label>
+            <label for="nearPhoto">货品保质期照片：</label>
             <input type="file" name="nearPhoto" id="nearPhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="nearPic" class="ui-hidden-accessible">nearPic</label>
             <input name="nearPic" id="nearPic" type="hidden" />
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="farPhoto" id="destory">货架照片(绑扎照片)：</label>
+            <label for="farPhoto" id="destory">陈列员货架照片：</label>
             <input type="file" name="farPhoto" id="farPhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="farPic" class="ui-hidden-accessible">farPic</label>
             <input name="farPic" id="farPic" type="hidden" />
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="inventoryPhoto" id="cap">仓库货品照片：</label>
-            <input type="file" name="inventoryPhoto" id="inventoryPhoto" accept="image/*" capture="camera" data-mini="true">
-            <label for="inventoryPic" class="ui-hidden-accessible">inventoryPic</label>
-            <input name="inventoryPic" id="inventoryPic" type="hidden" />
+            <label for="barCodePhoto" id="cap">条码照片（超市标签）：</label>
+            <input type="file" name="barCodePhoto" id="barCodePhoto" accept="image/*" capture="camera" data-mini="true">
+            <label for="barCodePic" class="ui-hidden-accessible">barCodePic</label>
+            <input name="barCodePic" id="barCodePic" type="hidden" />
         </div>
                 
         <button id="getCodeButton" type="button" data-theme="b">获取验证码</button>
@@ -382,7 +289,7 @@ $(function(){
             <input name="verifyCode" id="verifyCode" placeholder="填写短信验证码..." value="" type="text">
         </div>
         
-		<button id="subExchange">提交退换货/买赠</button>	
+		<button id="subExhibits">提交陈列货品</button>	
 		</div>
 	</div>
 

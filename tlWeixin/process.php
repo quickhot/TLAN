@@ -23,6 +23,14 @@
  */
 /*
  * 34:10陈列
+ * 发票照片
+ * 近景陈列货品保质期
+ * 远景陈列员货架照片
+ * 条码照片（超市标签）
+ */
+/*
+ * 36:13报数
+ * 
  */
 
 
@@ -84,6 +92,12 @@ if ($postArray['MsgType']=='event') {
 	if ($postArray['EventKey']=='exchange') {
 		$exchangeUrl = "http://".HOST."/exchange/exchange.php?wxId=".urlencode(General::wlencode($fromUserName));
 		$echoStr = '<a href="'.$exchangeUrl.'">点击此处退换/买赠</a>';
+		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
+	};
+	//陈列show
+	if ($postArray['EventKey']=='show') {
+		$exhibits = "http://".HOST."/exhibits/exhibits.php?wxId=".urlencode(General::wlencode($fromUserName));
+		$echoStr = '<a href="'.$exhibits.'">点击此处陈列货品</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
 	
