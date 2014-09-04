@@ -13,8 +13,8 @@
  * 近景照片（瓶子日期）
  * 销毁中照片（整体）
  * 瓶盖照片（瓶数和瓶盖）
-  
- * 
+
+ *
  * 买赠
  * 单子照片
  * 近景（日期要清晰）
@@ -30,7 +30,7 @@
  */
 /*
  * 36:13报数
- * 
+ *
  */
 
 
@@ -100,7 +100,13 @@ if ($postArray['MsgType']=='event') {
 		$echoStr = '<a href="'.$exhibits.'">点击此处陈列货品</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
-	
+	//每日报数
+	if ($postArray['EventKey']=='numOff') {
+	    $numOff = "http://".HOST."/numOff/numOff.php?wxId=".urlencode(General::wlencode($fromUserName));
+	    $echoStr = '<a href="'.$numOff.'">点击此处每日报数</a>';
+	    $xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
+	};
+
 	if ($postArray['Event']=='subscribe') {
 		$ret=file_get_contents("http://".HOST."/regNewUser.php?wxId=".urlencode(General::wlencode($fromUserName)));
 		if ($ret>0) {
