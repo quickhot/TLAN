@@ -9,15 +9,15 @@ if (!$wxId) {
 	include_once '../classes/MysqlDB.class.php';
 	include_once '../classes/ErrInfo.class.php';
 	include_once '../classes/General.class.php';
-	
+
 	$openId = General::wldecode($wxId);
-	
+
 	$newConn = new MysqlDB(DBHOST, DBUSER, DBPASS, DBNAME);
 	//检查是否注册员工
 	$resCheck = $newConn->checkRegist($openId);
 	if ($resCheck<0) {
 		$errCode = $resCheck;
-	} else 
+	} else
 	{
 		$staffId = $resCheck;
 		$brands = $newConn->getBrands();
@@ -125,7 +125,7 @@ WeixinApi.ready(function(Api){
     Api.hideOptionMenu();
      // 隐藏浏览器下方的工具栏
     Api.hideToolbar();
-    
+
     $("#closePage").click(
 		function(){
 			Api.closeWindow();
@@ -136,11 +136,11 @@ WeixinApi.ready(function(Api){
 $(function(){
 
 	var errCode = <?php echo $errCode;?>;
-	//当有错误的时候，就是错误码为负数	
+	//当有错误的时候，就是错误码为负数
 	if (errCode < 0) {
 		$.mobile.changePage("#dialog");
 	}
-	
+
 	//获取短信验证码
 	$("#getCodeButton").click(function()
          {
@@ -225,7 +225,7 @@ $(function(){
 			complete: function(XMLHttpRequest, textStatus){}
 		});
 	}
-	
+
 	//点击最终上传按钮触发事件
 	$("#subExhibits").click(function(){
 		var invoicePic = $("#invoicePic").val();
@@ -242,25 +242,25 @@ $(function(){
 		} else alert("验证码不正确");
 	});
 
-});  
-			
+});
+
 </script>
 
 </head>
 <body>
-	
+
 	<div data-role="page" id="exhibits" data-theme="b">
 	<div data-theme="b" data-role="header">
         <h3>货品陈列</h3>
     </div>
     <div data-role="content">
-    
+
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="invoicePhoto">发票照片：</label>
             <input type="file" name="invoicePhoto" id="invoicePhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="invoicePic" class="ui-hidden-accessible">invoicePic</label>
             <input name="invoicePic" id="invoicePic" type="hidden" />
-        </div>			
+        </div>
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="nearPhoto">货品保质期照片：</label>
             <input type="file" name="nearPhoto" id="nearPhoto" accept="image/*" capture="camera" data-mini="true">
@@ -274,22 +274,22 @@ $(function(){
             <input name="farPic" id="farPic" type="hidden" />
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="barCodePhoto" id="cap">条码照片（超市标签）：</label>
+            <label for="barCodePhoto" id="cap">促销价格签：</label>
             <input type="file" name="barCodePhoto" id="barCodePhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="barCodePic" class="ui-hidden-accessible">barCodePic</label>
             <input name="barCodePic" id="barCodePic" type="hidden" />
         </div>
-                
+
         <button id="getCodeButton" type="button" data-theme="b">获取验证码</button>
-        
+
         <div data-role="fieldcontain" data-controltype="textinput">
             <label for="verifyCode">
                 验证码
             </label>
             <input name="verifyCode" id="verifyCode" placeholder="填写短信验证码..." value="" type="text">
         </div>
-        
-		<button id="subExhibits">提交陈列货品</button>	
+
+		<button id="subExhibits">提交陈列货品</button>
 		</div>
 	</div>
 
@@ -320,7 +320,7 @@ $(function(){
 
 
 <div data-role="page" data-theme="b" id="beginUpload" data-close-btn="none">
-	
+
 		<div data-role="header">
 			<h1>上传图片</h1>
 		</div>

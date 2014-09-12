@@ -9,15 +9,15 @@ if (!$wxId) {
 	include_once '../classes/MysqlDB.class.php';
 	include_once '../classes/ErrInfo.class.php';
 	include_once '../classes/General.class.php';
-	
+
 	$openId = General::wldecode($wxId);
-	
+
 	$newConn = new MysqlDB(DBHOST, DBUSER, DBPASS, DBNAME);
 	//检查是否注册员工
 	$resCheck = $newConn->checkRegist($openId);
 	if ($resCheck<0) {
 		$errCode = $resCheck;
-	} else 
+	} else
 	{
 		$staffId = $resCheck;
 		$brands = $newConn->getBrands();
@@ -125,7 +125,7 @@ WeixinApi.ready(function(Api){
     Api.hideOptionMenu();
      // 隐藏浏览器下方的工具栏
     Api.hideToolbar();
-    
+
     $("#closePage").click(
 		function(){
 			Api.closeWindow();
@@ -136,11 +136,11 @@ WeixinApi.ready(function(Api){
 $(function(){
 
 	var errCode = <?php echo $errCode;?>;
-	//当有错误的时候，就是错误码为负数	
+	//当有错误的时候，就是错误码为负数
 	if (errCode < 0) {
 		$.mobile.changePage("#dialog");
 	}
-	
+
 	//获取短信验证码
 	$("#getCodeButton").click(function()
          {
@@ -174,17 +174,17 @@ $(function(){
 	});
 */
 	//当品牌选择框发生变化时，获取产品的函数
-	function getSelectVal(){ 
+	function getSelectVal(){
 	    $.getJSON("../getProducts.php",{brand:$("#brand").val()},function(json){ //从getProduct.php拿数据
-	        var product = $("#product"); 
-	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替 
-	        product.append("<option value=''>请选择上架货品</option>"); 
-	        $.each(json,function(index,array){ 
-	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>"; 
-	            product.append(option); 
+	        var product = $("#product");
+	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替
+	        product.append("<option value=''>请选择上架货品</option>");
+	        $.each(json,function(index,array){
+	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>";
+	            product.append(option);
 	        });
 	        $("#product").selectmenu("refresh",true);
-	    }); 
+	    });
 	}
 
 	//点击上传文件按钮
@@ -258,7 +258,7 @@ $(function(){
 			complete: function(XMLHttpRequest, textStatus){}
 		});
 	}
-	
+
 	//点击最终上传按钮触发事件
 	$("#subListing").click(function(){
 		var selectPro = new Array();
@@ -276,18 +276,18 @@ $(function(){
 		} else alert("验证码不正确");
 	});
 	//开始运行时获取产品列表
-	getSelectVal(); 
+	getSelectVal();
 	//品牌列表变化，触发事件
-    $("#brand").change(function(){ 
-        getSelectVal(); 
-    }); 
-});  
-			
+    $("#brand").change(function(){
+        getSelectVal();
+    });
+});
+
 </script>
 
 </head>
 <body>
-	
+
 	<div data-role="page" id="accept" data-theme="b">
 	<div data-theme="b" data-role="header">
         <h3>货品上架</h3>
@@ -298,9 +298,9 @@ $(function(){
                 品牌：
             </label>
             <select id="brand" name="brand" data-theme="b">
-            	
+
 <?php foreach ($brands as $key => $value) {
- echo "<option value=\"".$key."\">".$value."</option>"; 
+ echo "<option value=\"".$key."\">".$value."</option>";
 }?>
             </select>
         </div>
@@ -323,7 +323,7 @@ $(function(){
 			<h4 style="text-align:center">收货清单</h4>
 			<ul id="listV" data-role="listview" data-inset="true" data-icon="delete">
 			</ul>
- -->			
+ -->
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="farPhoto">整体货架照片：</label>
             <input type="file" name="farPhoto" id="farPhoto" accept="image/*" capture="camera" data-mini="true">
@@ -337,22 +337,22 @@ $(function(){
             <input name="nearPic" id="nearPic" type="hidden" />
         </div>
         <div data-role="fieldcontain" data-controltype="camerainput">
-            <label for="barPhoto">条码照片（超市标签）：</label>
+            <label for="barPhoto">价格签：</label>
             <input type="file" name="barPhoto" id="barPhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="barCode" class="ui-hidden-accessible">barCode</label>
             <input name="barCode" id="barCode" type="hidden" />
         </div>
-        
+
         <button id="getCodeButton" type="button" data-theme="b">获取验证码</button>
-        
+
         <div data-role="fieldcontain" data-controltype="textinput">
             <label for="verifyCode">
                 验证码
             </label>
             <input name="verifyCode" id="verifyCode" placeholder="填写短信验证码..." value="" type="text">
         </div>
-        
-		<button id="subListing">货品上架</button>	
+
+		<button id="subListing">货品上架</button>
 		</div>
 	</div>
 
@@ -383,7 +383,7 @@ $(function(){
 
 
 <div data-role="page" data-theme="b" id="beginUpload" data-close-btn="none">
-	
+
 		<div data-role="header">
 			<h1>上传图片</h1>
 		</div>

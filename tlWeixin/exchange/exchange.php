@@ -9,15 +9,15 @@ if (!$wxId) {
 	include_once '../classes/MysqlDB.class.php';
 	include_once '../classes/ErrInfo.class.php';
 	include_once '../classes/General.class.php';
-	
+
 	$openId = General::wldecode($wxId);
-	
+
 	$newConn = new MysqlDB(DBHOST, DBUSER, DBPASS, DBNAME);
 	//检查是否注册员工
 	$resCheck = $newConn->checkRegist($openId);
 	if ($resCheck<0) {
 		$errCode = $resCheck;
-	} else 
+	} else
 	{
 		$staffId = $resCheck;
 		$brands = $newConn->getBrands();
@@ -38,7 +38,7 @@ if ($errCode < 0) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
-<title>退换货/买赠</title>
+<title>报损/买赠</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script	src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
@@ -125,7 +125,7 @@ WeixinApi.ready(function(Api){
     Api.hideOptionMenu();
      // 隐藏浏览器下方的工具栏
     Api.hideToolbar();
-    
+
     $("#closePage").click(
 		function(){
 			Api.closeWindow();
@@ -136,11 +136,11 @@ WeixinApi.ready(function(Api){
 $(function(){
 
 	var errCode = <?php echo $errCode;?>;
-	//当有错误的时候，就是错误码为负数	
+	//当有错误的时候，就是错误码为负数
 	if (errCode < 0) {
 		$.mobile.changePage("#dialog");
 	}
-	
+
 	//获取短信验证码
 	$("#getCodeButton").click(function()
          {
@@ -174,16 +174,16 @@ $(function(){
 	});
 */
 	//当品牌选择框发生变化时，获取产品的函数
-	function getSelectVal(){ 
+	function getSelectVal(){
 	    $.getJSON("../getProducts.php",{brand:$("#brand").val()},function(json){ //从getProduct.php拿数据
-	        var product = $("#product"); 
-	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替 
-	        $.each(json,function(index,array){ 
-	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>"; 
-	            product.append(option); 
+	        var product = $("#product");
+	        $("option",product).remove(); //清空原有的选项，可以用option.empty();代替
+	        $.each(json,function(index,array){
+	            var option = "<option value='"+array['ProductID']+"'>"+array['ProductName']+"</option>";
+	            product.append(option);
 	        });
 	        $("#product").selectmenu("refresh",true);
-	    }); 
+	    });
 	}
 
 	//点击上传文件按钮
@@ -265,7 +265,7 @@ $(function(){
 			complete: function(XMLHttpRequest, textStatus){}
 		});
 	}
-	
+
 	//点击最终上传按钮触发事件
 	$("#subExchange").click(function(){
 		var cType = $("#cType").val();
@@ -285,12 +285,12 @@ $(function(){
 		} else alert("验证码不正确");
 	});
 	//开始运行时获取产品列表
-	getSelectVal(); 
+	getSelectVal();
 	//品牌列表变化，触发事件
-    $("#brand").change(function(){ 
-        getSelectVal(); 
+    $("#brand").change(function(){
+        getSelectVal();
     });
-    $("#cType").change(function(){ 
+    $("#cType").change(function(){
         var cType = $("#cType").val();
         if(cType=='1') {
             $("#destory").text("货架照片(绑扎照片)");
@@ -300,36 +300,36 @@ $(function(){
             $("#cap").text("瓶子和瓶盖数量");
         }
     });
-});  
-			
+});
+
 </script>
 
 </head>
 <body>
-	
+
 	<div data-role="page" id="exchange" data-theme="b">
 	<div data-theme="b" data-role="header">
-        <h3>退换货/买赠</h3>
+        <h3>报损/买赠</h3>
     </div>
     <div data-role="content">
-    
+
 	<div data-role="fieldcontain" data-controltype="selectmenu">
 		<label for="cType">操作类型：</label>
             <select id="cType" name="cType" data-theme="b">
 				<option value="">请选择操作类型</option>
 				<option value="1">买赠</option>
-				<option value="2">退换货</option>
+				<option value="2">报损</option>
             </select>
         </div>
-    
+
     <div data-role="fieldcontain" data-controltype="selectmenu">
             <label for="brand">
                 品牌：
             </label>
             <select id="brand" name="brand" data-theme="b">
-            	
+
 <?php foreach ($brands as $key => $value) {
- echo "<option value=\"".$key."\">".$value."</option>"; 
+ echo "<option value=\"".$key."\">".$value."</option>";
 }?>
             </select>
         </div>
@@ -347,13 +347,13 @@ $(function(){
             </label>
             <input name="amount" id="amount" placeholder="请填写货品数量..." type="number" />
         </div>
-		
+
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="docPhoto">退换货单：</label>
             <input type="file" name="docPhoto" id="docPhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="docPic" class="ui-hidden-accessible">docPic</label>
             <input name="docPic" id="docPic" type="hidden" />
-        </div>			
+        </div>
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="nearPhoto">近景照片(货品日期清晰)：</label>
             <input type="file" name="nearPhoto" id="nearPhoto" accept="image/*" capture="camera" data-mini="true">
@@ -372,17 +372,17 @@ $(function(){
             <label for="inventoryPic" class="ui-hidden-accessible">inventoryPic</label>
             <input name="inventoryPic" id="inventoryPic" type="hidden" />
         </div>
-                
+
         <button id="getCodeButton" type="button" data-theme="b">获取验证码</button>
-        
+
         <div data-role="fieldcontain" data-controltype="textinput">
             <label for="verifyCode">
                 验证码
             </label>
             <input name="verifyCode" id="verifyCode" placeholder="填写短信验证码..." value="" type="text">
         </div>
-        
-		<button id="subExchange">提交退换货/买赠</button>	
+
+		<button id="subExchange">提交报损/买赠</button>
 		</div>
 	</div>
 
@@ -413,7 +413,7 @@ $(function(){
 
 
 <div data-role="page" data-theme="b" id="beginUpload" data-close-btn="none">
-	
+
 		<div data-role="header">
 			<h1>上传图片</h1>
 		</div>

@@ -91,7 +91,7 @@ if ($postArray['MsgType']=='event') {
 	//退换货exchange
 	if ($postArray['EventKey']=='exchange') {
 		$exchangeUrl = "http://".HOST."/exchange/exchange.php?wxId=".urlencode(General::wlencode($fromUserName));
-		$echoStr = '<a href="'.$exchangeUrl.'">点击此处退换/买赠</a>';
+		$echoStr = '<a href="'.$exchangeUrl.'">点击此处报损/买赠</a>';
 		$xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
 	//陈列show
@@ -104,6 +104,12 @@ if ($postArray['MsgType']=='event') {
 	if ($postArray['EventKey']=='numOff') {
 	    $numOff = "http://".HOST."/numOff/numOff.php?wxId=".urlencode(General::wlencode($fromUserName));
 	    $echoStr = '<a href="'.$numOff.'">点击此处每日报数</a>';
+	    $xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
+	};
+
+	if ($postArray['EventKey']=='accountDetail') {
+	    $numOff = "http://".HOST."/register/staffInfo.php?wxId=".urlencode(General::wlencode($fromUserName));
+	    $echoStr = '<a href="'.$numOff.'">查看员工信息</a>';
 	    $xml=$response->textMsg($fromUserName, $toUserName, $echoStr);
 	};
 

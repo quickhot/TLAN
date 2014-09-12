@@ -55,7 +55,7 @@ $retMsg = $errInfo->getErrInfoByCode($retCode);
     <?php
     if ($retCode>0) {
 		$userDetail=$newConn->getUserDetail($openId);
-		
+
 ?>
      <h4 style="text-align:center">员工详细信息</h4>
     <ul data-role="listview" data-inset="true">
@@ -84,13 +84,13 @@ $retMsg = $errInfo->getErrInfoByCode($retCode);
       	<p style="text-align:center"><?php echo $userDetail['province'].'/'.$userDetail['city'].'/'.$userDetail['county'].'/'.$userDetail['address'];?></p>
       </li>
     </ul>
-<?php  
+<?php
     } else {
 		echo "注册失败，请您重试～！<br />".$retMsg;
 	}
 	?>
   </div>
-  
+
   <div data-role="footer" data-theme="b">
     <div data-role="navbar">
     <ul>

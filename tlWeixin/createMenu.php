@@ -14,12 +14,12 @@ $menu->addMenu("click", "员工", "staff", 3, null);
 
 $menu->addMenu("click", "验收货品", "checkRecv", 2, 1);
 $menu->addMenu("click", "货品上架", "listing", 2, 2);
-$menu->addMenu("click", "退换买赠", "exchange", 2, 3);
+$menu->addMenu("click", "买赠报损", "exchange", 2, 3);
 $menu->addMenu("click", "货品陈列", "show", 2, 4);
 $menu->addMenu("click", "每日报数", "numOff", 2, 5);
 
 $menu->addMenu("view", "员工手册", "http://mp.weixin.qq.com/s?__biz=MzA4Mzg4MzYyNQ==&mid=200490315&idx=1&sn=4f039bca80aedf2313302e9698ff39e3#rd", 3, 1);
-$menu->addMenu("click", "陈列费", "showFee", 3, 2);
+$menu->addMenu("click","服 务 费", "showFee", 3, 2);
 $menu->addMenu("click", "账号信息", "accountDetail", 3, 3);
 
 $delResponse = $menu->deleteMenu();
