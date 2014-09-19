@@ -4,7 +4,7 @@ mysql_query ( 'SET NAMES utf8' );
 //mysql_select_db ( $dbName);
 $msg='';
 mysql_query('BEGIN;');
-$qryNotify = 'SELECT `LHC`.notify.* FROM `LHC`.notify ';
+$qryNotify = 'SELECT `ts`.notify.* FROM `ts`.notify ';
 if (!($resNotify = mysql_query($qryNotify))) $msg=$msg.mysql_error();
 $oldTitle='';
 while ($rowNotify = mysql_fetch_array($resNotify,MYSQL_ASSOC)) {
@@ -18,15 +18,15 @@ while ($rowNotify = mysql_fetch_array($resNotify,MYSQL_ASSOC)) {
 	$urgency = $rowNotify['urgency'];
 	
 	if (!($newTitle==$oldTitle AND $newPubTime==$oldPubTime)) {
-		$insNotify = "INSERT INTO `LHCnew`.notify VALUES(NULL,'$newTitle','$newPubTime','$content','$picture','$URL',$urgency)";
+		$insNotify = "INSERT INTO `tsnew`.notify VALUES(NULL,'$newTitle','$newPubTime','$content','$picture','$URL',$urgency)";
 		if (!mysql_query($insNotify)) $msg=$msg.mysql_error();
 		$notifyId = mysql_insert_id();
 	}
-	$insNotifyAll="INSERT `LHCnew`.notifyAll VALUES(NULL,$notifyId,$roomId)";
+	$insNotifyAll="INSERT `tsnew`.notifyAll VALUES(NULL,$notifyId,$roomId)";
 	if (!mysql_query($insNotifyAll)) $msg=$msg.mysql_error();
 	$notifyAllId=mysql_insert_id();
 	
-	$insNotifyStatus = "INSERT INTO `LHCnew`.notifyStatus SELECT NULL,$notifyAllId,userPhone,hasRead,hasDeleted FROM `LHC`.notifyStatus WHERE notifyId=$oldNotifyId";
+	$insNotifyStatus = "INSERT INTO `tsnew`.notifyStatus SELECT NULL,$notifyAllId,userPhone,hasRead,hasDeleted FROM `ts`.notifyStatus WHERE notifyId=$oldNotifyId";
 	if (!mysql_query($insNotifyStatus)) $msg=$msg.mysql_error();
 	
 	$oldTitle = $newTitle;

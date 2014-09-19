@@ -1,10 +1,10 @@
-<?php 
-	include '../config.inc.php';
-	include '../class/lhcDAO.php';
+<?php
+	include '../dbInc.php';
+	include '../class/tsDAO.php';
 	include_once '../lib/loginStatus.php';
 	//echo $_GET['adminId'];
 	$adminId = $_GET['adminId'];
-	$lhcDAO = new lhcDAO();
+	$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
 	$adminLevel = $_SESSION['level'];
 	//echo $adminLevel;//普通管理0
 	if($adminLevel == 1){
@@ -36,17 +36,10 @@
 </head>
 <body style="background: #626262;">
 <div class="rightl">
-<!-- <p class="word"> 小区用户管理：管理小区内的房屋和对应的业主信息， 业主手机号码是唯一标识，必须填写。</p> -->
-
 <table id="rowed1"></table>
 <div id="prowed1"></div>
 <br />
-<!-- 
-<input type="BUTTON" id="ed1" value="Edit row 2" />
-<input type="BUTTON" id="sved1" disabled='true' value="Save row 2" />
-<input type="BUTTON" id="cned1" disabled='true' value="Cancel Save" />
-<input type="BUTTON" id="edtrow" value="Edit selected row" />
- -->
+
 <input id="adminId" type="hidden" value="<?php echo $adminId?>"/>
 <input type="button" id="saveButton" value="保存" />
 <script src="permissionManage.js" type="text/javascript"> </script>

@@ -10,6 +10,7 @@ class  tsDAO{
         $link = mysql_connect($dbHost,$dbUser,$dbPass);
         if ($link) {
             mysql_select_db($dbName);
+            mysql_query("set names 'utf8'",$link);
             $this->dbLink = $link;
         } else return false;
     }
@@ -18,7 +19,7 @@ class  tsDAO{
  * $password    密码
 **/
 	public function getAdminIdAndLevel($username,$password ){
-		$qryAdmin = "SELECT `level`,`id` FROM `admin` WHERE adminName='".$username."' AND adminPass=MD5('".$password."')";
+		$qryAdmin = "SELECT `id`,`level` FROM `admin` WHERE adminName='".$username."' AND adminPass=MD5('".$password."')";
 		$resAdmin = mysql_query($qryAdmin,$this->dbLink);
 		if ($resAdmin) {
 		    $rowAdmin = mysql_fetch_row($resAdmin);
@@ -47,7 +48,7 @@ class  tsDAO{
 	    $sql="select * from menu where parent_id=0";
 	    $res = mysql_query($sql,$this->dbLink);
 	    $result = array();
-	    while (($row = mysql_fetch_array($res,MYSQL_NUM))!=false) {
+	    while (($row = mysql_fetch_array($res,MYSQL_ASSOC))!=false) {
 	        $result[]=$row;
 	    }
 	    return $result;
@@ -140,7 +141,103 @@ class  tsDAO{
         return mysql_insert_id($this->dbLink);
 	}
 
+	/**
+	 *  获取管理员表数据
+	 *
+	 */
+	public function getAdministrator(){
+	    $sql="SELECT * FROM admin ORDER BY `adminName`";
+	    $res = mysql_query($sql,$this->dbLink);
+	    $result = array();
+	    while (($row = mysql_fetch_array($res,MYSQL_ASSOC))!=false) {
+	        $result[]=$row;
+	    }
+	    return $result;
+	}
+	/** 获得permissionInfo总数
+	 * @param unknown $adminId
+	 */
+	public function getPermissionInfoCount($adminId){
+	    $sql = "SELECT COUNT(*) AS `count` FROM `v_permissioninfoview`
+	    WHERE parent_id<>0 AND adminId=$adminId";
+	    $res = mysql_query($sql,$this->dbLink);
+		if ($res) {
+		    $result = mysql_fetch_row($res);
+		    return $result[0];
+		} else return false;
+	}
 
+	/** 获得详细权限分配列表内容
+	 * by Nico
+	 * @param unknown $db
+	 * @param unknown $adminId
+	 * @param unknown $sidx
+	 * @param unknown $sord
+	 * @param unknown $start
+	 * @param unknown $limit
+	 */
+	public function getPermissionInfo($adminId,$sidx,$sord,$start,$limit){
+	    $sql = "SELECT v_listMenus.`id`,v_listMenus.`name`,v_listMenus.`parName`, accessControl.`adminId` FROM v_listMenus
+	    LEFT JOIN accessControl ON accessControl.`menuId`=v_listMenus.`id` AND adminId=$adminId";
+	    $res = mysql_query($sql,$this->dbLink);
+	    $result = array();
+	    while (($row = mysql_fetch_array($res,MYSQL_NUM))!=false) {
+	        $result[]=$row;
+	    }
+	    return $result;
+	}
+	/** 权限分配操作
+	 * @param 被分配权限的管理员ID $adminId
+	 * @param 被分配的权限 $saveParam
+	 */
+	public function permissionSave($adminId,$saveParam){
+	    $table = "accessControl";
+//先删除之前的权限
+	    $delqry = "DELETE FROM accessControl WHERE adminId=$adminId";
+	    mysql_query($delqry,$this->dbLink);
+	    $result = true;
+	    for($i=0;$i<count($saveParam);$i++){
+	        try{
+	            $resultInsert[$i] = mysql_query("INSERT INTO accesscontrol(adminId,menuId) VALUES($adminId,".$saveParam[$i].")",$this->dbLink);
+	        }catch(Exception $e){
+	            $resultInsert[$i] = 0;
+	        }
+	        $result = $result&&$resultInsert[$i];
+	    }
+	    return $result;
+	}
+	/**
+	 * 获取代理数量
+	 * @return Ambigous <>|boolean
+	 */
+	public function getAgentCount(){
+	    $sql="SELECT COUNT(*) FROM agent;";
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
+	    } else return false;
+	}
+	/**
+	 *获取代理数据
+	 */
+	public function getAgent($sidx,$sord,$start,$limit){
+	    $sql="SELECT * FROM agent";
+	    if ($sidx) {
+	        $sql=$sql." ORDER BY $sidx $sord";
+	    }
+	    if ($start!='') {
+	        $sql=$sql." LIMIT $start,$limit";
+	    }
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $ret = array();
+	        while (($row=mysql_fetch_array($res,MYSQL_NUM))!=false) {
+	            $ret[] = $row;
+	        }
+	        return $ret;
+	    } else return false;
+	}
 //TODO: MODIFY
 	/**
 	 * 获取注册用户数据
@@ -582,14 +679,6 @@ class  tsDAO{
 		}
 	}
 
-	/*
-	 *  通过$ESId获取管理员表数据
-	 *  $ESId 所属楼盘id
-	*/
-	public function getAdministratorByESId($db,$ESId){
-		$sql="SELECT * FROM admin WHERE ESId=".$ESId." ORDER BY `adminName`";
-    	return $db->fetchAllData($sql,NULL,PDO::FETCH_ASSOC);
-	}
 
 	/** 获得管理员等级
 	 * by Nico
@@ -601,16 +690,7 @@ class  tsDAO{
 		return $db -> getColumn($sql);
 	}
 
-	/** 获得permissionInfo总数
-	 * by Nico
-	 * @param unknown $db
-	 * @param unknown $adminId
-	 */
-	public function getPermissionInfoCount($db,$adminId){
-		$sql = "SELECT COUNT(*) AS `count` FROM `permissionInfoView`
-				WHERE parent_id<>0 AND adminId='$adminId'";
-		return $db -> getColumn($sql);
-	}
+
 	/** 获得房屋名称列表
 	 * by Nico
 	 * @param unknown $db
@@ -1638,47 +1718,6 @@ LEFT JOIN brochureArea ON brochureArea.`BATId`=brochureAreaTypeInfo.id AND broch
 	 		echo "Failed:  ".$e->getMessage();
 	 	}
 	 }
-
-	 /** 获得详细权限分配列表内容
-	  * by Nico
-	  * @param unknown $db
-	  * @param unknown $adminId
-	  * @param unknown $sidx
-	  * @param unknown $sord
-	  * @param unknown $start
-	  * @param unknown $limit
-	  */
-	 public function getPermissionInfo($db, $adminId,$sidx,$sord,$start,$limit){
-	 	$sql = "SELECT v_listMenus.`id`,v_listMenus.`name`,v_listMenus.`parName`, accessControl.`adminId` FROM v_listMenus
-LEFT JOIN accessControl ON accessControl.`menuId`=v_listMenus.`id` AND adminId='$adminId'";
-	 	return $db -> fetchAllData($sql,NULL,PDO::FETCH_NUM);
-	 }
-
-	 /** 权限分配操作
-	  * by Nico
-	  * @param unknown $db
-	  * @param 被分配权限的管理员ID $adminId
-	  * @param 被分配的权限 $saveParam
-	  */
-	 public function permissionSave($db,$adminId,$saveParam){
-	 	$table = "accessControl";
-	 	$condition['adminId'] = $adminId;
-	 	$this->deleteOper($db, $table, $condition);//先删除之前的权限
-	 	$data['adminId'] = $adminId;
-	 	$result = true;
-	 	for($i=0;$i<count($saveParam);$i++){
-	 		$data['menuId'] = $saveParam[$i];
-	 		try{
-	 			$resultInsert[$i] = $this->insertOper($db, $table, $data);
-	 		}catch(Exception $e){
-	 			$resultInsert[$i] = 0;
-	 		}
-	 		$result = $result&&$resultInsert[$i];
-	 	}
-	 	return $result;
-	 }
-
-
 
 	 /** 统计参加活动的人数
 	  * by Nico

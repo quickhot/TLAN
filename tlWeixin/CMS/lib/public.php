@@ -334,7 +334,7 @@ function remapURL($URL){
  * @param unknown_type $pemFile
  * @param unknown_type $deep 目录深度，根目录是0，依次类推
  */
-function sendPushMessage($deep,$phoneType,$identifyNo,$message,$sound,$badge,$pemFile,$topic='lhc'){
+function sendPushMessage($deep,$phoneType,$identifyNo,$message,$sound,$badge,$pemFile,$topic='ts'){
 	$path='';
 	for($i=0;$i<$deep;$i++){
 		$path = '../'.$path;

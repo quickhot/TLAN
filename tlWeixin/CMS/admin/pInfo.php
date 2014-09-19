@@ -1,6 +1,6 @@
 <?php
-include '../config.inc.php';
-include '../class/lhcDAO.php';
+include '../dbInc.php';
+include '../class/tsDAO.php';
 include_once '../lib/loginStatus.php';
 if($_SESSION['level'] == 1){
 $adminId = $_GET['adminId'];
@@ -28,8 +28,9 @@ if($totalrows) {
 // $row = $db->fetchAllData($sql);
 // //$row = mysql_fetch_array($result,MYSQL_ASSOC);
 // $count = $row[0]['count'];
-$lhcDAO = new lhcDAO();
-$count = $lhcDAO -> getPermissionInfoCount($db,$adminId);
+$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+$count = $tsDAO -> getPermissionInfoCount($adminId);
+//$count = 2;
 
 if( $count >0 ) {
 	$total_pages = ceil($count/$limit);
@@ -40,7 +41,7 @@ if ($page > $total_pages) $page=$total_pages;
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
 
-$result = $lhcDAO->getPermissionInfo($db, $adminId,$sidx,$sord,$start,$limit);
+$result = $tsDAO->getPermissionInfo($adminId,$sidx,$sord,$start,$limit);
 
 $responce=(object) NULL;
 $responce->page = $page;
@@ -48,7 +49,7 @@ $responce->total = $total_pages;
 $responce->records = $count;
 $i=0;
 foreach ($result as $arr){
-	$responce->rows[$i]['id'] = $arr['0'];
+    $responce->rows[$i]['id'] = $arr['0'];
 	$responce->rows[$i]['cell'] = $arr;
 	$i++;
 }

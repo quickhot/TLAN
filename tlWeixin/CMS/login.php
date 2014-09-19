@@ -20,7 +20,7 @@ if($do=='login'){
 	//获取用户名和密码
 	$username=$_POST['userName'];
 	$password=$_POST['password'];
-	//创建lhcDAO对象
+	//创建tsDAO对象
 	$tsDAO=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
 	if (!$tsDAO) {
 	    echo "数据库连接失败";
@@ -28,8 +28,8 @@ if($do=='login'){
 	}
 	//调用方法返回数据
 	$tsLogin =$tsDAO->getAdminIdAndLevel($username, $password);
+	var_dump($tsLogin);
 	$adminId=$tsLogin[0];
-
 	if($adminId){
 	        session_start();
 	        $_SESSION['tsSession']="logined";

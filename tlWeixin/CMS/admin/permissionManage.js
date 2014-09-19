@@ -1,7 +1,7 @@
 var adminId = $("#adminId").val();
 
 jQuery("#rowed1").jqGrid({
-   	url:'/admin/permissionInfo.php?adminId='+adminId,
+   	url:'pInfo.php?adminId='+adminId,
 	datatype: "json",
    	colNames:['id','name','parName','adminId'],
    	colModel:[

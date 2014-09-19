@@ -111,8 +111,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 	//创建tsDAO_query对象
 	$tsDAO_query=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
 	//调用tsDAO_query对象的getAdministrator方法
-	//TODO: TO BE CONTINUED
-	$admin_query=$tsDAO_query->getAdministratorByESId($db, $ESId);
+	$admin_query=$tsDAO_query->getAdministrator();
 	//foreach循环页面显示数据
     foreach ($admin_query as $arr){
         $userid=$arr['id'];
