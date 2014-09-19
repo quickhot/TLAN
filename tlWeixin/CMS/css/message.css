@@ -1,0 +1,54 @@
+@charset "UTF-8";
+.phone{
+	text-align:center;
+	}
+.table1{
+	border:1px solid #a6c9e2;
+	}
+.table1 td{
+	border:none;
+	padding-top:10px;
+	vertical-align:top;
+	padding-bottom:10px;
+	}
+.table1 p{
+	margin-top:3px;
+	}
+.messagecor{
+	moz-border-radius:5px;
+	webkit-border-radius:5px;
+	khtml-border-radius:5px;
+	border-radius:5px;
+	}
+.messagetit{
+	border:1px solid #cccccc;
+	min-height:50px;
+	_height:50px;
+	float:left;
+	width:inherit;
+	width:580px;
+	margin-left:13px;
+	padding:5px;
+	}
+.role{
+	width:15px;
+	position:absolute;
+	z-index:10;
+	margin-top:10px;
+	margin-left:0px;
+	+margin-left:-605px;
+	}
+.roleright{
+	width:15px;
+	margin-top:10px;
+	position:absolute;
+	z-index:10;
+	margin-left:604px;
+	+margin-left:-2px;
+	}
+.messname{
+	text-align:center;
+	}
+.textred{
+	color:#F00;
+	}

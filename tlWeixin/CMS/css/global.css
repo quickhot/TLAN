@@ -1,0 +1,26 @@
+@charset "UTF-8";
+body{
+font-size:12px;
+margin:0;
+padding:0;
+background:#626262;
+}
+h1,p{
+margin:0;
+padding:0;
+font-size:14px;
+}
+ul,li{
+margin:0px;
+padding:0px;
+list-style:none;
+}
+a{
+color:#545555;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+img{
+border:none;}

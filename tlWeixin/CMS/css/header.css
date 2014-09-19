@@ -1,0 +1,50 @@
+@charset "UTF-8";
+#header{
+	background:url(../images/headerbn.png) repeat-x;
+	height:57px;
+	}
+.headercon{
+	width:1220px;
+	margin:0 auto;
+	background:url(../images/header.png) no-repeat;
+	height:57px;
+	}
+.words{
+    color: #EDF1F5;
+    font-family: "微软雅黑";
+    font-size: 25px;
+    height: 38px;
+    line-height: 25px;
+    margin-left: 155px;
+    padding-top: 13px;
+    width: 400px;
+}
+.slogo{
+    background: url("../images/slogo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 28px;
+    margin-right: 155px;
+    margin-top: -38px;
+    width: 87px;
+	float:right;
+
+}
+.shadow{
+	height:7px;
+	width:170px;
+	margin-left:110px;
+	background:url(../images/b2.png) repeat-x;
+
+}
+#main{
+	width:1220px;
+	margin:10px auto;
+	}
+
+#footer{
+	clear:both;
+	margin-top:10px;
+	background:url(../images/line.gif) no-repeat top center;
+	height:46px;
+	text-align:center;
+	padding-top:15px;
+}

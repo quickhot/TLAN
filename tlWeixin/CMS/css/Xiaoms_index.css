@@ -1,0 +1,157 @@
+*{padding:0px;margin:0px;}
+body{
+    background-color: #9cc7db;
+    font-family: Microsoft YaHei,KaiTi_GB2312,simsun,Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #c8c8c8;
+	background-image: url('../images/bg.png');
+	background-repeat: repeat-y
+	background-position: left top;
+}
+#center{
+
+	width:300px;
+	height:377px;
+    background-image:url('../images/bg.png');
+	background-repeat: repeat-y;
+   	margin-top: 100px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+
+}
+#cycle{
+	width:188px;
+	height:80px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom:auto;
+	margin-left: auto;
+}
+#cycle_logo{
+
+	width:188px;
+	height:188px;
+	background-image:url('../images/logo_cycle.png');
+	background-repeat: no-repeat;
+
+}
+
+#logo_container{
+
+	width:121px;
+	height:44px;
+	padding-top:35px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom:auto;
+	margin-left: auto;
+
+}
+#logo{
+
+	width:121px;
+	height:44px;
+	background-image:url('../images/logo.png');
+	background-repeat: no-repeat;
+	padding-bottom:30px;
+
+}
+#form{
+
+    float: left;
+	background-image:url('../images/form_bg.png');
+	background-repeat: no-repeat;
+    width:320px;
+	height: 277px;
+
+}
+
+
+input.text{
+	border: none;
+	height:26px;
+	line-height:22px;
+	padding-top: 0px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+	background-color:transparent;
+	width: 245px;
+}
+select{
+   width:140px;
+   height:22px;
+}
+input.submit{
+   width:85px;
+   height:40px;
+   background:url("../images/submit.png") right top no-repeat;
+   border:0px;
+   cursor:pointer;
+}
+input.submit:hover{
+   background-position:left 0px;;
+}
+#top{
+    width: 269px;
+    height:150px;
+}
+
+#top .user {
+	float: left;
+	width: 269px;
+	display: block;
+	padding-top: 35px;
+	padding-left:25px;
+}
+#top .pwd {
+	float: left;
+	display: block;
+	width: 269px;
+	padding-top: 30px;
+	padding-left:25px;
+	padding-bottom:25px;
+}
+#bottom{
+    width: 269px;
+    height:50px;
+
+}
+
+#forget {
+  float: left;
+  width: 52px;
+  height: 20px;
+}
+#forget h1 {
+  display: block;
+  float: left;
+  width: 52px;
+  height: 20px;
+  padding-left:20px;
+  padding-top:10px;
+  text-indent: -9999px;
+}
+#forget h1 a {
+  display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/forget.png");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+#bottom .login {
+	width: 269px;
+	display: block;
+	padding-left:193px;
+}
+#line {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/line.png");
+    background-repeat: no-repeat;
+  background-position: 0 0;
+
+}
