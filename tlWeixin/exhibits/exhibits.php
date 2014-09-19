@@ -193,12 +193,13 @@ $(function(){
 		)
 	});
 	//点击最终上传按钮函数
-	function submitExhibits(invoicePic,nearPic,farPic,barCodePic) {
+	function submitExhibits(startDate,endDate,nearPic,farPic,barCodePic) {
 		$.ajax({
 			type: "post",
 			url: "submitExhibits.php",
 			data:{
-				'invoicePic':invoicePic,
+				'startDate':startDate,
+				'endDate':endDate,
 				'farPic':farPic,
 				'nearPic':nearPic,
 				'barCodePic':barCodePic,
@@ -228,14 +229,15 @@ $(function(){
 
 	//点击最终上传按钮触发事件
 	$("#subExhibits").click(function(){
-		var invoicePic = $("#invoicePic").val();
 		var nearPic = $("#nearPic").val();
 		var farPic = $("#farPic").val();
 		var barCodePic = $("#barCodePic").val();
+		var startDate = $("#startDate").val();
+		var endDate = $("#endDate").val()
 		var vCode = checkVerifyCode();
 		if (vCode=="1"){
-			if (invoicePic!='' && nearPic!='' && farPic!='' && barCodePic !='') {
-				submitExhibits(invoicePic,nearPic,farPic,barCodePic);
+			if (startDate!='' && endDate!='' && nearPic!='' && farPic!='' && barCodePic !='') {
+				submitExhibits(startDate,endDate,nearPic,farPic,barCodePic);
 			} else{
 				alert("信息不完整，请填写完全");
 			}
@@ -254,13 +256,20 @@ $(function(){
         <h3>货品陈列</h3>
     </div>
     <div data-role="content">
-
+        <div data-role="fieldcontain">
+            <label for="startDate">陈列起始日期：</label>
+            <input type="date" name="startDate" id="startDate">
+            <label for="endDate">陈列结束日期：</label>
+            <input type="date" name="endDate" id="endDate">
+        </div>
+        <!--根据要求去掉了发票
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="invoicePhoto">发票照片：</label>
             <input type="file" name="invoicePhoto" id="invoicePhoto" accept="image/*" capture="camera" data-mini="true">
             <label for="invoicePic" class="ui-hidden-accessible">invoicePic</label>
             <input name="invoicePic" id="invoicePic" type="hidden" />
         </div>
+         -->
 		<div data-role="fieldcontain" data-controltype="camerainput">
             <label for="nearPhoto">货品保质期照片：</label>
             <input type="file" name="nearPhoto" id="nearPhoto" accept="image/*" capture="camera" data-mini="true">

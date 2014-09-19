@@ -1,7 +1,9 @@
 <?php
 header ( 'Content-type: text/json' );
 
-$invoicePic=$_POST['invoicePic'];
+//$invoicePic=$_POST['invoicePic'];
+$startDate=$_POST['startDate'];
+$endDate=$_POST['endDate'];
 $barCodePic=$_POST['barCodePic'];
 $nearPic=$_POST['nearPic'];
 $farPic=$_POST['farPic'];
@@ -18,29 +20,29 @@ $docRoot = $_SERVER["DOCUMENT_ROOT"].'/';
 $movNearPic = copy($docRoot.'uploadTemp/'.$nearPic, $docRoot.'photos/'.$nearPic);
 $movFarPic = copy($docRoot.'uploadTemp/'.$farPic, $docRoot.'photos/'.$farPic);
 $movBarCodePic = copy($docRoot.'uploadTemp/'.$barCodePic, $docRoot.'photos/'.$barCodePic);
-$movInvoicePic = copy($docRoot.'uploadTemp/'.$invoicePic, $docRoot.'photos/'.$invoicePic);
+//$movInvoicePic = copy($docRoot.'uploadTemp/'.$invoicePic, $docRoot.'photos/'.$invoicePic);
 
-if ($movBarCodePic && $movNearPic && $movFarPic && $movInvoicePic) {
+if ($movBarCodePic && $movNearPic && $movFarPic ) {
 	$conn = new MysqlDB(DBHOST,DBUSER,DBPASS,DBNAME);
 	$link = $conn->link;
 	mysql_query("SET AUTOCOMMIT=0",$link);
 	mysql_query("begin",$link);
-	$insExhibits = "INSERT INTO exhibits(exTime,staffId,barCodePic,nearPic,invoicePic,farPic) (SELECT NOW(),id,'$barCodePic','$nearPic','$invoicePic','$farPic' FROM staff WHERE openId='$openId')";
+	$insExhibits = "INSERT INTO exhibits(exTime,staffId,barCodePic,nearPic,farPic,startDate,endDate) (SELECT NOW(),id,'$barCodePic','$nearPic','$farPic','$startDate','$endDate' FROM staff WHERE openId='$openId')";
 	mysql_query($insExhibits,$link);
 	$exhibitsId = mysql_insert_id($link);
 	if ($exhibitsId) {
 
 	} else $ret['errCode'] = -21;
-	
+
 	if ($ret['errCode']>0) {
 		mysql_query("commit",$link);
 		unlink($docRoot.'uploadTemp/'.$nearPic);
 		unlink($docRoot.'uploadTemp/'.$barCodePic);
 		unlink($docRoot.'uploadTemp/'.$farPic);
-		unlink($docRoot.'uploadTemp/'.$invoicePic);
+		//unlink($docRoot.'uploadTemp/'.$invoicePic);
 	} else mysql_query("rollback",$link);
 	mysql_query("set autocommit=1",$link);
-	
+
 } else {
 	$ret['errCode']= -13;
 }
