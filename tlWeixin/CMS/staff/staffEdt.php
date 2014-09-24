@@ -11,7 +11,7 @@ $userInfo['IDCardNo']	= $_POST['IDCardNo'];
 $userInfo['identity']	= 3;
 $oper = $_POST['oper'];
 
-$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 $tsDAO -> issetMobileNo($db,$userInfo['mobileNo']);
 $result = $tsDAO->getStaffRoomId($db, $ESId,$userInfo['mobileNo']);
 $userInfo['roomId']=$result;

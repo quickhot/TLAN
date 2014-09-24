@@ -4,7 +4,7 @@
 	include_once '../lib/loginStatus.php';
 	//echo $_GET['adminId'];
 	$adminId = $_GET['adminId'];
-	$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+	$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 	$adminLevel = $_SESSION['level'];
 	//echo $adminLevel;//普通管理0
 	if($adminLevel == 1){

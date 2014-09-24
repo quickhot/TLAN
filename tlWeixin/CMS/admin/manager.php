@@ -50,7 +50,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 		//条件数组
 		$editcond['id']=$user_id;
 		//创建tsDAO对象
-		$tsDAO_edit=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+		$tsDAO_edit=new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 		//调用tsDA中的updateAdministrator方法
 		$admin_update=$tsDAO_edit->updateOper($editarray, $editcond);
 		echo "<p class=\"word\" style=\"color: #fb565a\">";
@@ -60,7 +60,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 	//删除操作
 	if ($do=='delete') {
 		//创建tsDAO对象
-		$tsDAO_check = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+		$tsDAO_check = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 		$userLevel=$tsDAO_check->getLevelById($user_id);
 		echo "<p class=\"word\" style=\"color: #fb565a\">";
 		if (strval($userLevel)==1) {
@@ -82,7 +82,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 		echo "<p class=\"word\" style=\"color: #fb565a\">";
 		if($addarray['adminName']!=null&&$addarray['adminPass']!=null){
 			//创建tsDAO对象并调用getAdministratorByUsername检查用户名是否存在
-			$tsDAO_add_text=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+			$tsDAO_add_text=new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 			$add_text=$tsDAO_add_text->getAdministratorByUsername($addarray['adminName']);
 			if(count($add_text)){//用户名已存在
 				echo "用户名已存在，请重新添加</p>";
@@ -109,7 +109,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 			  </tr>
 	<?php
 	//创建tsDAO_query对象
-	$tsDAO_query=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+	$tsDAO_query=new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 	//调用tsDAO_query对象的getAdministrator方法
 	$admin_query=$tsDAO_query->getAdministrator();
 	//foreach循环页面显示数据

@@ -55,7 +55,7 @@ $GLOBALS["ID"] =1; //用来跟踪下拉菜单的ID号
 $layer=1; //用来跟踪当前菜单的级数
 
 //创建对象并获取一级菜单
-$tsDAO=new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+$tsDAO=new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 $result=$tsDAO->getAmenu();
 
 //判断管理员等级，显示相应菜单

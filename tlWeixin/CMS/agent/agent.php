@@ -27,7 +27,7 @@ if($totalrows) {
 // $row = $db->fetchAllData($sql);
 // //$row = mysql_fetch_array($result,MYSQL_ASSOC);
 // $count = $row[0]['count'];
-$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 $count = $tsDAO -> getAgentCount();
 
 if( $count >0 ) {

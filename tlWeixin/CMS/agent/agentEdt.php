@@ -7,6 +7,6 @@ $agent['agentName'] = $_POST['agentName'];
 $agent['address'] = $_POST['address'];
 $oper = $_POST['oper'];
 
-$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname);
+$tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 $tsDAO -> agentEdit($db,$oper,$agent);
 ?>

@@ -6,14 +6,45 @@ class  tsDAO{
 
     public $dbLink;
 
-    function __construct($dbHost,$dbUser,$dbPass,$dbName) {
-        $link = mysql_connect($dbHost,$dbUser,$dbPass);
+    function __construct($dbHost,$dbUser,$dbPass,$dbName,$dbPort=3306) {
+        $link = mysql_connect("$dbHost:$dbPort",$dbUser,$dbPass);
         if ($link) {
             mysql_select_db($dbName);
             mysql_query("set names 'utf8'",$link);
             $this->dbLink = $link;
         } else return false;
     }
+
+    //查询一个字段的结果
+    public function getColumn($sql){
+        try{
+            $res=mysql_query($sql,$this->dbLink);
+            $row = mysql_fetch_row($res);
+            return $row[0];
+        }catch (Exception $e){
+            echo $sql;
+            throw $e;
+        }
+    }
+    /**查询所有数据
+     * MYSQL_ASSOC 返回以键值对的形式
+     * MYSQL_NUM 返回以数字索引形式
+     * MYSQL_BOTH 两种数组形式都有，这是默认的
+     */
+    public function fetchAllData($sql,$fetch_style=MYSQL_BOTH){
+        try{
+            $res = mysql_query($sql,$this->dbLink);
+            $ret = array();
+            while (mysql_fetch_array($res,$fetch_style)) {
+                $ret[]=$res;
+            }
+            return $ret;
+        }catch (Exception $e){
+            echo $sql;
+            throw $e;
+        }
+    }
+
 /**通过密码查询后台管理员表返回用户id和level
  * $username   用户名
  * $password    密码
@@ -238,6 +269,23 @@ class  tsDAO{
 	        return $ret;
 	    } else return false;
 	}
+	/**
+	 *获取员工数据总数
+	 */
+	public function getCountStaff(){
+	    $sql = "SELECT COUNT(*) as count FROM `staff`";
+	    return $this -> getColumn($sql);
+	}
+	/**
+	 *获取员工数据
+	 */
+	public function getStaff($sidx,$sord,$start,$limit){
+	    $sql="SELECT openId,staffName,gender,idCard,mobileNo,outletName,address,agentName,province,city,county,staffId,outletId,agentId,countyId
+FROM v_userdetail";
+if (!$sidx) $sql=$sql." ORDER BY $sidx $sord";
+if (!$start) $sql=$sql."  LIMIT $start,$limit";
+	    return $this->fetchAllData($sql,MYSQL_NUM);
+	}
 //TODO: MODIFY
 	/**
 	 * 获取注册用户数据
@@ -292,15 +340,7 @@ class  tsDAO{
 		ESId=".$ESId."  AND `identity` = 3 ORDER BY id";
 		return $db->fetchAllData($sql,NULL,PDO::FETCH_ASSOC);
 	}
-	/**
-	 *获取员工数据
-	*/
-	public function getStaff($db,$ESId,$sidx,$sord,$start,$limit){
-		$sql="SELECT `id`,`roomId`,`alias`,`gender`,`mobileNo`,`IDCardNo`
-		FROM userInfoView WHERE
-		ESId=".$ESId." AND `identity` = 3 ORDER BY $sidx $sord LIMIT $start,$limit";
-		return $db->fetchAllData($sql,NULL,PDO::FETCH_NUM);
-	}
+
 	/**
 	 *获取UserInfoView数据总数
 	*/
@@ -337,14 +377,7 @@ class  tsDAO{
 		ESId=".$ESId." AND `identity` = 2 ";
 		return $db -> getColumn($sql);
 	}
-	/**
-	 *获取员工数据总数
-	*/
-	public function getCountStaff($db,$ESId){
-		$sql = "SELECT COUNT(*) as count FROM `userInfoView` WHERE
-		ESId=".$ESId." AND `identity` = 3 ";
-		return $db -> getColumn($sql);
-	}
+
 	/**
 	 *获取数据总数
 	*/
