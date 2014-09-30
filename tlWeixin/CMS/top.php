@@ -13,7 +13,7 @@ body {
 	margin-bottom: 0px;
 }
 </style>
-  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.js"></script>
 </head>
 <body style="background: #626262;">
 <div id="header">

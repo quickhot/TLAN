@@ -1,12 +1,13 @@
 <?php
+header ( 'Content-type: text/json' );
 include '../dbInc.php';
 include '../class/tsDAO.php';
 include_once '../lib/loginStatus.php';
-$agent['id'] = $_POST['id'];
-$agent['agentName'] = $_POST['agentName'];
-$agent['address'] = $_POST['address'];
-$oper = $_POST['oper'];
 
 $tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
-$tsDAO -> agentEdit($db,$oper,$agent);
+if ($tsDAO -> agentEdit($_POST)) {
+    $res['success']=1;
+} else $res['success']=0;
+
+echo json_encode($res);
 ?>

@@ -1,7 +1,7 @@
 <?php
 class MysqlDB{
 	public $link;
-	
+
 	function __construct($host,$dbUser,$dbPass,$dbName){
 		$link = mysql_connect($host,$dbUser,$dbPass);
 		if (!$link) {
@@ -11,7 +11,7 @@ class MysqlDB{
 		mysql_select_db($dbName,$link);
 		$this->link = $link;
 	}
-	
+
 	function checkPhoneNo($phoneNo,$idCard) {
 		$qryPhoneNo = "SELECT count(*) FROM staff WHERE mobileNo='$phoneNo' AND idCard='$idCard'";
 		$resPhoneNo = mysql_query($qryPhoneNo,$this->link);
@@ -21,7 +21,7 @@ class MysqlDB{
 			return true;
 		} else return -5;
 	}
-	
+
 	function getPhoneNoByOpenId($openId) {
 		$qryPhoneNo = "SELECT mobileNo	FROM staff WHERE openId='$openId'";
 		$resPhoneNo = mysql_query($qryPhoneNo,$this->link);
@@ -31,7 +31,7 @@ class MysqlDB{
 			return $phoneNo;
 		} else return -16;
 	}
-	
+
 	function requestVerifyCode($openId) {
 		$newCode = $this->genCode();
 		$qryVerifyCode = "SELECT count(*) FROM verify WHERE openId='$openId'";
@@ -58,7 +58,7 @@ class MysqlDB{
 			return 1;
 		} else return -17;
 	}
-	
+
 	function addNewUser($openId) {
 		$qryNewUser="INSERT IGNORE INTO verify(openId) VALUES('$openId')";
 		$res = mysql_query($qryNewUser,$this->link);
@@ -68,11 +68,11 @@ class MysqlDB{
 			return -4;
 		}
 	}
-	
+
 	function genCode(){
 		return mt_rand(100000, 999999);
 	}
-	
+
 	function doRegist($verifyCode,$phoneNo,$idCard,$openId) {
 		$qryVerifyCode = "SELECT verifyCode FROM verify WHERE openId='$openId'";
 		$resVerifyCode = mysql_query($qryVerifyCode,$this->link);
@@ -95,9 +95,9 @@ class MysqlDB{
 			return -7;
 		}
 	}
-	
+
 	function getUserDetail($openId) {
-		$qryUserDetail = "SELECT * FROM v_userdetail WHERE openId='$openId'";
+		$qryUserDetail = "SELECT * FROM v_userDetail WHERE openId='$openId'";
 		$resUserDetail = mysql_query($qryUserDetail,$this->link);
 		if ($resUserDetail) {
 			$rowUserDetal = mysql_fetch_assoc($resUserDetail);
@@ -106,7 +106,7 @@ class MysqlDB{
 			return -10;
 		}
 	}
-	
+
 	function checkRegist($openId) {
 		$qryRegist = "SELECT id FROM staff WHERE openId='$openId'";
 		$resRegist = mysql_query($qryRegist,$this->link);
@@ -116,7 +116,7 @@ class MysqlDB{
 			return $staffId;
 		} else return -11;
 	}
-	
+
 	function getBrands(){
 		$qryBrands = "SELECT * FROM brand";
 		$resBrands = mysql_query($qryBrands,$this->link);
@@ -130,9 +130,9 @@ class MysqlDB{
 		} else {
 			return -12;
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 }

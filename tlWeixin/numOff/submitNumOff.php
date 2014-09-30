@@ -29,22 +29,22 @@ $docRoot = $_SERVER["DOCUMENT_ROOT"].'/';
 	mysql_query("SET AUTOCOMMIT=0",$link);
 	mysql_query("begin",$link);
 	//删除已经提交的报数
-	$delIfExist = "DELETE dailycountoff.* FROM dailycountoff
-	     INNER JOIN staff AS oneStaff ON oneStaff.`id` = dailycountoff.`staffId`
+	$delIfExist = "DELETE dailyCountOff.* FROM dailyCountOff
+	     INNER JOIN staff AS oneStaff ON oneStaff.`id` = dailyCountOff.`staffId`
 	     INNER JOIN staff AS twoStaff ON twoStaff.`outletId` = oneStaff.`outletId`
-	     WHERE twoStaff.`openId`='$openId' AND DATE(dailycountoff.`countOffDate`)=CURDATE()";
+	     WHERE twoStaff.`openId`='$openId' AND DATE(dailyCountOff.`countOffDate`)=CURDATE()";
     $resDelIfExist = mysql_query($delIfExist,$link);
     if ($resDelIfExist) {
 
         //插入dailyCountOff
-    	$insDaily = "INSERT INTO dailycountoff(countOffDate,staffId) (SELECT NOW(),id FROM staff WHERE openId='$openId')";
+    	$insDaily = "INSERT INTO dailyCountOff(countOffDate,staffId) (SELECT NOW(),id FROM staff WHERE openId='$openId')";
     	mysql_query($insDaily,$link);
     	$dailyId = mysql_insert_id($link);
     	if ($dailyId) {
     		foreach ($proList as $productId => $amount) {
     			$sqlValues = $sqlValues."($productId,$amount,$dailyId),";
     		}
-    		$insDetail = substr("INSERT INTO countoffdetail(productId,amount,countOffId) VALUES $sqlValues",0,-1);
+    		$insDetail = substr("INSERT INTO countOffDetail(productId,amount,countOffId) VALUES $sqlValues",0,-1);
     		if (mysql_query($insDetail,$link)) {
     			$ret['success']=1;
     			$ret['errCode'] = 1;

@@ -28,13 +28,13 @@ if ($movDocPic && $movNearPic && $movFarPic && $movInventoryPic) {
 	$link = $conn->link;
 	mysql_query("SET AUTOCOMMIT=0",$link);
 	mysql_query("begin",$link);
-	$insRCG = "INSERT INTO returnchangegrant(RCGDatetime,staffId,docPic,nearPic,inventoryPic,farPic,productId,amount) (SELECT NOW(),id,'$docPic','$nearPic','$inventoryPic','$farPic','$productId','$amount' FROM staff WHERE openId='$openId')";
+	$insRCG = "INSERT INTO returnChangeGrant(RCGDatetime,staffId,docPic,nearPic,inventoryPic,farPic,productId,amount) (SELECT NOW(),id,'$docPic','$nearPic','$inventoryPic','$farPic','$productId','$amount' FROM staff WHERE openId='$openId')";
 	mysql_query($insRCG,$link);
 	$RCGId = mysql_insert_id($link);
 	if ($RCGId) {
 
 	} else $ret['errCode'] = -20;
-	
+
 	if ($ret['errCode']>0) {
 		mysql_query("commit",$link);
 		unlink($docRoot.'uploadTemp/'.$nearPic);
@@ -43,7 +43,7 @@ if ($movDocPic && $movNearPic && $movFarPic && $movInventoryPic) {
 		unlink($docRoot.'uploadTemp/'.$farPic);
 	} else mysql_query("rollback",$link);
 	mysql_query("set autocommit=1",$link);
-	
+
 } else {
 	$ret['errCode']= -13;
 }

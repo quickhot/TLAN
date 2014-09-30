@@ -5,10 +5,10 @@ jQuery("#rowed1").jqGrid({
 	datatype: "json",
    	colNames:['id','name','parName','adminId'],
    	colModel:[
-   	    {name:'id',index:'id', width:"140px",align:"center", editable:false,hidden:true},
+   	    {name:'id',index:'id', width:"140px",align:"center", editable:false,hidden:false},
    		{name:'name',index:'name', width:"300px",align:"center",editable:true},
    		{name:'parName',index:'parName', width:"140px",align:"center",editable:true},
-   		{name:'adminId',index:'adminId', width:"300px",align:"center",editable:true,hidden:true}
+   		{name:'adminId',index:'adminId', width:"300px",align:"center",editable:true,hidden:false}
    	],
    	rowNum:600,
    	//mtype: "POST",

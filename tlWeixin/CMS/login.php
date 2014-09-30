@@ -9,8 +9,8 @@
 <body>
 <div id="container">
 <?php
-require_once('dbInc.php');
-require_once 'class/tsDAO.php';
+include_once 'dbInc.php';
+include_once 'class/tsDAO.php';
 $thisUrl = $_SERVER['PHP_SELF'];
 $do=$_GET['do'];
 //记录登陆状态   0未登录 1已登陆

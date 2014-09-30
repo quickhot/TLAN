@@ -13,8 +13,8 @@
 <div class="tablelist" style="width:764px">
 <?php
 include_once '../dbInc.php';
-require_once  '../class/tsDAO.php';
-require_once  '../lib/loginStatus.php';
+include_once '../class/tsDAO.php';
+include_once '../lib/loginStatus.php';
 $thisUrl = $_SERVER['PHP_SELF'];
 $do		=$_GET['do'];
 $user_id	=$_GET['user_id'];
@@ -52,7 +52,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 		//创建tsDAO对象
 		$tsDAO_edit=new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
 		//调用tsDA中的updateAdministrator方法
-		$admin_update=$tsDAO_edit->updateOper($editarray, $editcond);
+		$admin_update=$tsDAO_edit->updateOper($table,$editarray, $editcond);
 		echo "<p class=\"word\" style=\"color: #fb565a\">";
 		if ($admin_update) echo "修改成功"; else echo "修改失败";
 		echo "</p>";
@@ -66,7 +66,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 		if (strval($userLevel)==1) {
 			echo "不能删除超级管理员";
 		} else {
-		$admin_delete=$tsDAO_check->deleteOper($user_id);
+		$admin_delete=$tsDAO_check->deleteOper($table,array("id"=>$user_id));
 		//调用tsDA中的updateAdministrator方法
 		if ($admin_delete) echo "删除成功"; else echo "删除失败";
 		}
@@ -88,7 +88,7 @@ if(isset($tsSession)&&($_SESSION['level']==1)){
 				echo "用户名已存在，请重新添加</p>";
 			}else{//可以创建用户
 				//创建tsDAO对象并调用addAdministrator添加用户
-				$admin_add=$tsDAO_add_text->insertOper($addarray);
+				$admin_add=$tsDAO_add_text->insertOper($table,$addarray);
 				if ($admin_add) echo "添加成功"; else echo "添加失败";
 			}
 

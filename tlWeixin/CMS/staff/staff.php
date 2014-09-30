@@ -12,7 +12,7 @@ $limit = $_REQUEST['rows']; // get how many rows we want to have into the grid
 $sidx = $_REQUEST['sidx']; // get index row - i.e. user click to sort
 $sord = $_REQUEST['sord']; // get the direction
 
-if(!$sidx) $sidx =1;
+//if(!$sidx) $sidx =1;
 //if(!$limit) $limit=10000;
 //if(!$page) $page=1;
 // connect to the database
@@ -38,14 +38,15 @@ if ($page > $total_pages) $page=$total_pages;
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
 
-$result = $tsDAO->getStaff($db, $ESId,$sidx,$sord,$start,$limit);
+$result = $tsDAO->getStaff($sidx,$sord,$start,$limit);
 
+$responce = (object)NULL;
 $responce->page = $page;
 $responce->total = $total_pages;
 $responce->records = $count;
 $i=0;
 foreach ($result as $arr){
-	$responce->rows[$i]['id'] = $arr['0'];
+	$responce->rows[$i]['staffId'] = $arr['11'];
 	$responce->rows[$i]['cell'] = $arr;
 	$i++;
 }

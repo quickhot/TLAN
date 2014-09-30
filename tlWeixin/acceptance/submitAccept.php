@@ -38,11 +38,11 @@ if ($movAcceptPic && $movNearPic && $movFarPic) {
 	mysql_query($insAccept,$link);
 	$acceptId = mysql_insert_id($link);
 	if ($acceptId) {
-		
+
 		foreach ($proList as $productId => $amount) {
 			$sqlValues = $sqlValues."($productId,$amount,$acceptId),";
 		}
-		$insDetail = substr("INSERT INTO acceptdetail(productId,amount,acceptanceId) VALUES $sqlValues",0,-1);
+		$insDetail = substr("INSERT INTO acceptDetail(productId,amount,acceptanceId) VALUES $sqlValues",0,-1);
 		if (mysql_query($insDetail,$link)) {
 			$ret['success']=1;
 			$ret['errCode'] = 1;
@@ -50,7 +50,7 @@ if ($movAcceptPic && $movNearPic && $movFarPic) {
 			$ret['errCode'] = -15;
 		}
 	} else $ret['errCode'] = -14;
-	
+
 	if ($ret['errCode']>0) {
 		mysql_query("commit",$link);
 		unlink($docRoot.'uploadTemp/'.$nearPic);
@@ -58,7 +58,7 @@ if ($movAcceptPic && $movNearPic && $movFarPic) {
 		unlink($docRoot.'uploadTemp/'.$farPic);
 	} else mysql_query("rollback",$link);
 	mysql_query("set autocommit=1",$link);
-	
+
 } else {
 	$ret['errCode']= -13;
 }

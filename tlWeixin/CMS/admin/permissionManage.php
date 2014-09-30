@@ -29,7 +29,7 @@
 	$.jgrid.no_legacy_api = true;
 	$.jgrid.useJSON = true;
 </script>
-<script src="../js/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script src="../js/jquery.jqGrid.js" type="text/javascript"></script>
 <script src="../js/jquery.tablednd.js" type="text/javascript"></script>
 <script src="../js/jquery.contextmenu.js" type="text/javascript"></script>
 <script src="../js/ui.multiselect.js" type="text/javascript"></script>

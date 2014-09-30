@@ -1,19 +1,20 @@
 <?php
+header ( 'Content-type: text/json' );
+
 include '../dbInc.php';
 include '../class/tsDAO.php';
 include_once '../lib/loginStatus.php';
-$userInfo['id']			= $_POST['id'];
-// $userInfo['roomId']	    = $_POST['roomId'];
-$userInfo['alias']		= $_POST['alias'];
-$userInfo['gender']		= $_POST['gender'];
-$userInfo['mobileNo']	= $_POST['mobileNo'];
-$userInfo['IDCardNo']	= $_POST['IDCardNo'];
-$userInfo['identity']	= 3;
-$oper = $_POST['oper'];
 
+$res = array();
+if ($_POST['outletName']) {
+    $_POST['outletId'] = $_POST['outletName'];
+}
 $tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
-$tsDAO -> issetMobileNo($db,$userInfo['mobileNo']);
-$result = $tsDAO->getStaffRoomId($db, $ESId,$userInfo['mobileNo']);
-$userInfo['roomId']=$result;
-$tsDAO -> staffEdit($db,$oper,$userInfo);
+if ($tsDAO->staffEdit($_POST)) {
+    $res['success'] = 1;
+} else $res['success'] = 0;
+
+echo json_encode($res);
+
+//echo json_encode($_POST);
 ?>
