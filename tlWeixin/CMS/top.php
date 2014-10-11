@@ -17,7 +17,7 @@ body {
 </head>
 <body style="background: #626262;">
 <div id="header">
- <div class="words"><a href="main.php" target="mainFrame" style="color:#FFF;text-decoration:none;">置业小秘书管理系统</a></div>
+ <div class="words"><a href="main.php" target="mainFrame" style="color:#FFF;text-decoration:none;">同瞬微信流程管理系统</a></div>
  <div class="slogo"></div>
  <div class="shadow"></div>
 </div>

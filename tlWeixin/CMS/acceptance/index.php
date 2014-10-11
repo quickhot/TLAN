@@ -5,7 +5,7 @@ include_once '../lib/loginStatus.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>每日报数管理</title>
+<title>收货管理</title>
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/redmond/jquery-ui-custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/ui.jqgrid.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/ui.multiselect.css" />
@@ -28,9 +28,9 @@ include_once '../lib/loginStatus.php';
 </head>
 <body style="background: #626262;">
 <div class="rightl">
-<p class="word" style="color: #e9be2a">*每日报数统计</p>
+<p class="word" style="color: #e9be2a">*货品验收管理统计</p>
 <a class="word" style="color: #e9be2a">分组依据: </a><select id="chngroup">
-	<option value="countOffDate">报数日期</option>
+	<option value="accDate">收货日期</option>
 	<option value="agentName">代理商</option>
 	<option value="outletName">门店</option>
 </select>
@@ -38,7 +38,7 @@ include_once '../lib/loginStatus.php';
 <div id="prowed1"></div>
 <br />
 
-<script src="numOff.js" type="text/javascript"> </script>
+<script src="acceptance.js" type="text/javascript"> </script>
 
 </div>
 </body>

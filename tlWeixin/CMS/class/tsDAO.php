@@ -15,6 +15,23 @@ class  tsDAO{
         } else return false;
     }
 
+    public function getValues($sql,$sidx=NULL,$sord=NULL,$start='',$limit=NULL) {
+        if ($sidx) {
+            $sql=$sql." ORDER BY $sidx $sord";
+        }
+        if ($start!='') {
+            $sql=$sql." LIMIT $start,$limit";
+        }
+        $res = mysql_query($sql,$this->dbLink);
+        if ($res) {
+            $ret = array();
+            while (($row=mysql_fetch_array($res,MYSQL_NUM))!=false) {
+                $ret[] = $row;
+            }
+            return $ret;
+        } else return false;;
+    }
+
     //查询一个字段的结果
     public function getColumn($sql){
         try{
@@ -369,7 +386,7 @@ FROM v_userDetail";
 	    }
 	}
 
-	/** 执行员工信息编辑增删改操作
+	/** 执行代理信息编辑增删改操作
 	 * @param unknown $db
 	 * @param unknown $oper
 	 * @param unknown $userInfo
@@ -468,6 +485,15 @@ FROM v_userDetail";
 	    } else return false;;
 	}
 
+	public function getnumOffDetailCount($countOffId) {
+	    $sql="SELECT COUNT(*) FROM countOffDetail WHERE countOffId=$countOffId;";
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
+	    } else return false;;
+	}
+
 	public function getnumOff($sidx,$sord,$start,$limit) {
 	    $sql="SELECT staff.id,countOffDate,staffId,staff.`staffName`,outlets.`outletName`,agent.`agentName` FROM dailyCountOff
 LEFT JOIN staff ON staff.`id`=staffId
@@ -489,21 +515,108 @@ LEFT JOIN agent ON agent.`id`=outlets.`agentId`";
 	    } else return false;;
 	}
 
-	public function getValues($sql,$sidx=NULL,$sord=NULL,$start='',$limit=NULL) {
-	    if ($sidx) {
-	        $sql=$sql." ORDER BY $sidx $sord";
-	    }
-	    if ($start!='') {
-	        $sql=$sql." LIMIT $start,$limit";
-	    }
+	public function getAcceptanceCount() {
+	    $sql="SELECT COUNT(*) FROM acceptance;";
 	    $res = mysql_query($sql,$this->dbLink);
 	    if ($res) {
-	        $ret = array();
-	        while (($row=mysql_fetch_array($res,MYSQL_NUM))!=false) {
-	            $ret[] = $row;
-	        }
-	        return $ret;
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
 	    } else return false;;
+	}
+
+	public function getAcceptanceDetailCount($acceptanceId) {
+	    $sql="SELECT COUNT(*) FROM acceptDetail WHERE acceptanceId=$acceptanceId;";
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
+	    } else return false;;
+	}
+
+	public function getListCount() {
+	    $sql="SELECT COUNT(*) FROM listing;";
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
+	    } else return false;;
+	}
+
+	public function getBrandCount() {
+        $sql="SELECT COUNT(*) FROM brand;";
+        $res = mysql_query($sql,$this->dbLink);
+        if ($res) {
+            $row=mysql_fetch_row($res);
+            return $row[0];
+        } else return false;
+	}
+
+	public function brandEdit($postArray){
+	    $brandId = $_POST['id'];
+	    try{
+	        switch ($postArray['oper']){
+	            case "add":
+	                unset($postArray['id']);
+	                unset($postArray['oper']);
+	                if ($this->insertOper('brand', $postArray)) {
+	                    return true;
+	                } else return false;
+	                break;
+	            case "edit":
+	                unset($postArray['oper']);
+	                $con=array("id"=>$brandId);
+	                return $this->updateOper('brand', $postArray, $con);
+	                break;
+	            case "del":
+	                return $this->deleteOper('brand',array('id'=>$brandId));
+	                break;
+	        }
+	    }catch(Exception $e){
+	        echo "Failed:  ".$e->getMessage();
+	    }
+	}
+
+	public function getProductCount() {
+	    $sql="SELECT COUNT(*) FROM product;";
+	    $res = mysql_query($sql,$this->dbLink);
+	    if ($res) {
+	        $row=mysql_fetch_row($res);
+	        return $row[0];
+	    } else return false;
+	}
+
+	public function productEdit($postArray){
+	    $productId = $_POST['id'];
+	    try{
+	        switch ($postArray['oper']){
+	            case "add":
+	                unset($postArray['id']);
+	                unset($postArray['oper']);
+	                $postArray['brandId']=$postArray['brandName'];
+	                unset($postArray['brandName']);
+	                if ($this->insertOper('product', $postArray)) {
+	                    return true;
+	                } else return false;
+	                break;
+	            case "edit":
+	                $postArray['brandId']=$postArray['brandName'];
+	                unset($postArray['brandName']);
+	                unset($postArray['oper']);
+	                $con=array("id"=>$productId);
+	                return $this->updateOper('product', $postArray, $con);
+	                break;
+	            case "del":
+	                return $this->deleteOper('product',array('id'=>$productId));
+	                break;
+	        }
+	    }catch(Exception $e){
+	        echo "Failed:  ".$e->getMessage();
+	    }
+	}
+
+	public function getBrandList() {
+	    $sql = "SELECT id,brandName FROM brand";
+	    return $this->fetchAllData($sql,MYSQL_ASSOC);
 	}
 
 }

@@ -4,13 +4,13 @@ include '../dbInc.php';
 include '../class/tsDAO.php';
 include_once '../lib/loginStatus.php';
 
-$countOffDetailId = $_GET['id'];
+$acceptanceId = $_GET['id'];
 $page = $_GET['page']; // get the requested page
 $limit = $_GET['rows']; // get how many rows we want to have into the grid
 $sidx = $_GET['sidx']; // get index row - i.e. user click to sort
 $sord = $_GET['sord']; // get the direction
 
-$countOffDetailId = $_REQUEST['id'];
+$acceptanceId = $_REQUEST['id'];
 $page = $_REQUEST['page']; // get the requested page
 $limit = $_REQUEST['rows']; // get how many rows we want to have into the grid
 $sidx = $_REQUEST['sidx']; // get index row - i.e. user click to sort
@@ -31,7 +31,7 @@ if($totalrows) {
 // //$row = mysql_fetch_array($result,MYSQL_ASSOC);
 // $count = $row[0]['count'];
 $tsDAO = new tsDAO($dbHost,$dbUser,$dbPass,$dbname,$dbPort);
-$count = $tsDAO -> getnumOffDetailCount($countOffDetailId);
+$count = $tsDAO -> getAcceptanceDetailCount($acceptanceId);
 
 if( $count >0 ) {
     $total_pages = ceil($count/$limit);
@@ -42,12 +42,12 @@ if ($page > $total_pages) $page=$total_pages;
 $start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
 
-//$result = $tsDAO->getnumOff($sidx,$sord,$start,$limit);
-$sql="SELECT  countOffDetail.id,brand.`brandName`,product.`productName`,amount
-FROM countOffDetail
-LEFT JOIN product ON product.`id`=countOffDetail.`productId`
+//$result = $tsDAO->getacceptance($sidx,$sord,$start,$limit);
+$sql="SELECT acceptDetail.id,brand.`brandName`,product.`productName`,amount
+FROM acceptDetail
+LEFT JOIN product ON product.`id`=acceptDetail.`productId`
 LEFT JOIN brand ON brand.`id`=product.`brandId`
-WHERE countOffid =$countOffDetailId";
+WHERE acceptanceId =$acceptanceId";
 $result = $tsDAO->getValues($sql, $sidx, $sord, $start, $limit);
 
 $responce=(object) NULL;

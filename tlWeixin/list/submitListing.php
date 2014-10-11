@@ -27,9 +27,9 @@ if ($movBarCodePic && $movNearPic && $movFarPic) {
 	mysql_query($insAccept,$link);
 	$acceptId = mysql_insert_id($link);
 	if ($acceptId) {
-
+        $ret['success'] = 1;
 	} else $ret['errCode'] = -19;
-	
+
 	if ($ret['errCode']>0) {
 		mysql_query("commit",$link);
 		unlink($docRoot.'uploadTemp/'.$nearPic);
@@ -37,7 +37,7 @@ if ($movBarCodePic && $movNearPic && $movFarPic) {
 		unlink($docRoot.'uploadTemp/'.$farPic);
 	} else mysql_query("rollback",$link);
 	mysql_query("set autocommit=1",$link);
-	
+
 } else {
 	$ret['errCode']= -13;
 }

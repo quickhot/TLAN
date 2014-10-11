@@ -1,10 +1,11 @@
 jQuery("#rowed1").jqGrid({
-   	url:'numOff.php',
+   	url:'acceptance.php',
 	datatype: "json",
-   	colNames:['id','报数日期','店员id','店员名字','门店名称','代理名称'],
+   	colNames:['id','收货日期','收货时间','店员id','店员名字','门店名称','代理名称'],
    	colModel:[
    	 {name:'id',index:'id', width:"50px",align:"center",editable:false},
-   	 {name:'countOffDate',index:'countOffDate', width:"200px",align:"left", editable:true,editrules:{required:true}},
+   	 {name:'accDate',index:'accDate', width:"200px",align:"left", editable:true,editrules:{required:true}},
+   	 {name:'accTime',index:'accTime', width:"200px",align:"left", editable:true,editrules:{required:true}},
    	 {name:'staffId',index:'staffId', width:"50px",align:"left", editable:true,hidden:true},
    	 {name:'staffName',index:'staffName', width:"100px",align:"center", editable:false},
    	 {name:'outletName',index:'outletName', width:"200px",align:"center", editable:true},
@@ -16,25 +17,25 @@ jQuery("#rowed1").jqGrid({
    	rowList:[50,80,100],
    	loadonce:true,
    	pager: '#prowed1',
-   	sortname: 'countOffDate',
+   	sortname: 'accDate',
    	height: "100%",
     viewrecords: true,
     //rownumbers: true,
     sortorder: "DESC",
     //gridview : true,
-	caption: "每日报数信息管理",
+	caption: "货品验收信息管理",
     grouping: true,
    	groupingView : {
-   		groupField : ['countOffDate'],
+   		groupField : ['accDate'],
    		groupColumnShow : [true],
    		groupText : ['<b>{0}</b>'],
    		groupCollapse : false,
-		groupOrder: ['asc'],
+		groupOrder: ['desc'],
 		groupSummary : [true],
 		groupDataSorted : true
    	},
     footerrow: false,
-	editurl: "numOffEdt.php",
+	editurl: "acceptanceEdt.php",
    	subGrid:true,
    	subGridRowExpanded: function(subgrid_id, row_id) {
 		// we pass two parameters
@@ -49,7 +50,7 @@ jQuery("#rowed1").jqGrid({
 		pager_id = "p_"+subgrid_table_id;
 		$("#"+subgrid_id).html("<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
 		jQuery("#"+subgrid_table_id).jqGrid({
-			url:"numOffDetail.php?id="+row_id,
+			url:"acceptanceDetail.php?id="+row_id,
 			datatype: "json",
 			colNames: ['id','品牌名称','产品名称','数量'],
 			colModel: [
@@ -88,7 +89,7 @@ jQuery("#chngroup").change(function(){
 //jQuery("#rowed1").jqGrid('navGrid',"#prowed1",{edit:true,add:true,del:true});
 
 jQuery("#rowed1").jqGrid('navGrid','#prowed1',{edit:false,add:false,del:false},//options
-		{reloadAfterSubmit:true,closeAfterEdit:true,url:"numOffEdt.php",afterSubmit:afSub}, // edit options
+		{reloadAfterSubmit:true,closeAfterEdit:true,url:"acceptanceEdt.php",afterSubmit:afSub}, // edit options
 		{reloadAfterSubmit:true,closeAfterAdd:true,afterSubmit:afSub}, // add options
 		{reloadAfterSubmit:true,beforeSubmit:bfSub,afterSubmit:afSub}, // del options
 		{} // search options
@@ -112,7 +113,7 @@ function afSub(response,postdata){
 
 function bfSub(postdata, formid){
 	var res = new Array();
-	if (confirm("删除每日报数，将删除所有关于该门店当天的报数数据,\n包括具体报数数据等。\n您确定要删除该报数吗？") ){
+	if (confirm("删除收货信息，将删除所有关于该次收货的数据,\n包括具体每种货品数量等。\n您确定要删除该收货吗？") ){
 		res[0]=true;
 		return res;
 	} else {

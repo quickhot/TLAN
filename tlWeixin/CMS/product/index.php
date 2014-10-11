@@ -5,7 +5,7 @@ include_once '../lib/loginStatus.php';
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>每日报数管理</title>
+<title>商品管理</title>
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/redmond/jquery-ui-custom.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/ui.jqgrid.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../themes/ui.multiselect.css" />
@@ -28,17 +28,12 @@ include_once '../lib/loginStatus.php';
 </head>
 <body style="background: #626262;">
 <div class="rightl">
-<p class="word" style="color: #e9be2a">*每日报数统计</p>
-<a class="word" style="color: #e9be2a">分组依据: </a><select id="chngroup">
-	<option value="countOffDate">报数日期</option>
-	<option value="agentName">代理商</option>
-	<option value="outletName">门店</option>
-</select>
+<p class="word" style="color: #e9be2a">*请您认真商品名称，所属品牌，以确保数据完整，删除品牌将删除所有关于此品牌的数据，不建议删除</p>
 <table id="rowed1"></table>
 <div id="prowed1"></div>
 <br />
 
-<script src="numOff.js" type="text/javascript"> </script>
+<script src="product.js" type="text/javascript"> </script>
 
 </div>
 </body>
